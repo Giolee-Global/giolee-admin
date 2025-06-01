@@ -32,7 +32,27 @@
 
             <ul class="navbar-nav">
                 <li class="nav-item my-1">
-                    <a class="nav-link d-flex align-items-center rounded-pill <?php if($page=='Dashboard'){echo 'active';}?>" href="./"><i class="bi bi-grid-1x2-fill"></i> <span>Overview</span></a>
+                    <a class="nav-link d-flex align-items-center rounded-pill <?php if($page=='Dashboard'){echo 'active';}?>" href="dashboard"><i class="bi bi-grid-1x2-fill"></i> <span>Overview</span></a>
+                </li>
+
+                <li class="nav-item my-1">
+                    <a class="nav-link d-flex align-items-center rounded-pill" href="#sidebar-pages" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebar-pages">
+                        <i class="bi bi-file-earmark-break-fill"></i> 
+                        <span>Pages</span> 
+                        <span class="badge badge-sm rounded-pill me-n2 bg-success-subtle text-success ms-auto"></span>
+                    </a>
+                    <div
+                        class="collapse" id="sidebar-pages">
+                        <ul class="nav nav-sm flex-column mt-1">
+                            <li class="nav-item"><a href="page-overview.html" class="nav-link">Overview</a></li>
+                            <li class="nav-item"><a href="page-table-listing.html" class="nav-link">Table Listing</a></li>
+                            <li class="nav-item"><a href="page-details.html" class="nav-link">Details</a></li>
+                            <li class="nav-item"><a href="page-create-form.html" class="nav-link">Create Form</a></li>
+                            <li class="nav-item"><a href="page-list.html" class="nav-link">Large List</a></li>
+                            <li class="nav-item"><a href="page-checklist.html" class="nav-link">Checklist</a></li>
+                            <li class="nav-item"><a href="page-collection.html" class="nav-link">Collection</a></li>
+                        </ul>
+                        </div>
                 </li>
 
                 <li class="nav-item my-1">
