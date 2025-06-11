@@ -24,7 +24,7 @@
                     <header class="border-bottom mb-10">
                         <div class="row align-items-center">
                             <div class="col-sm-6 col-12">
-                                <h1 class="ls-tight">Account Settings</h1>
+                                <h3 class="ls-tight">Account Settings</h3>
                             </div>
                         </div>
                         <ul class="nav nav-tabs nav-tabs-flush gap-6 overflow-x border-0 mt-4">

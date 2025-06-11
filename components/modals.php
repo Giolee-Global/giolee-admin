@@ -1,34 +1,55 @@
-    <!-- View Basic Plan Feature modal end-->
-    <div class="modal fade" id="basicPlanModal" tabindex="-1" aria-labelledby="basicPlanModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm modal-dialog-centered">
+    <!-- Create new admin modal start-->
+    <div class="modal fade" id="createNewAdminModal" tabindex="-1" aria-labelledby="createNewAdminModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content overflow-hidden">
                 <div class="modal-header pb-0 border-0">
-                    <h1 class="modal-title h4" id="basicPlanModalLabel">Basic Plan Features</h1>
+                    <h1 class="modal-title h4" id="createNewAdminModalLabel">Create New Admin</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                     </button>
                 </div>
                 <hr class="mb-0">
+                <div class="row g-5 mt-3 mb-2">
+                    <div class="col-sm-6 mx-auto">
+                        <div class="alert alert-danger" role="alert">Default Password: <b>123456</b></div>
+                    </div>
+                </div>
+
                 <div class="modal-body undefined">
-                    <p class="fw-bold">This plan gives access to the following:</p>
-                    <ul class="list-unstyled mt-0">
-                        <li class="py-2 d-flex align-items-center">
-                            <div class="icon icon-xs text-base icon-shape rounded-circle bg-danger-subtle text-danger me-3">
-                                <i class="bi bi-check"></i>
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+                        <div class="row g-5 mb-5">
+                            <div class="col-sm-6">
+                                <label class="form-label">First name</label> 
+                                <input type="text" name="firstName" required class="form-control">
                             </div>
-                            <p>1 basic meal plan</p>
-                        </li>
-                        <li class="py-2 d-flex align-items-center">
-                            <div class="icon icon-xs text-base icon-shape rounded-circle bg-danger-subtle text-danger me-3">
-                                <i class="bi bi-check"></i>
+                            <div class="col-sm-6">
+                                <label class="form-label">Last name</label> 
+                                <input type="text" name="lastName" required class="form-control">
                             </div>
-                            <p>Newsletters & podcast</p>
-                        </li>
-                    </ul>
+                        </div>
+
+                        <div class="col-sm-12 mb-5">
+                            <label class="form-label" for="email">Email address</label> 
+                            <input type="email" name="email" required class="form-control" id="email">
+                        </div>
+
+                        <div class="col-sm-12 mb-5">
+                            <label class="form-label">Designation</label> 
+                            <select class="form-select" name="designation" required aria-label="Designation">
+                                <option selected disabled>Select Designation</option>
+                                <option>Admin</option>
+                                <option>Super-Admin</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3 mt-2">
+                            <button type="submit" name="new_admin_btn" class="btn btn-dark w-100">Create Account</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-    <!-- View Basic Plan Feature modal end-->
+    <!-- Create new admin modal end-->
 
 
     <!-- View Customized Plan Feature modal end-->

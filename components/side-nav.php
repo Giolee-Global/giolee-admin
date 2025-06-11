@@ -64,24 +64,23 @@
                 </li>
 
                 <li class="nav-item my-1">
-                    <a class="nav-link d-flex align-items-center rounded-pill <?php if($page=='My Plan'){echo 'active';}?>" href="my-plan"><i class="bi bi-book-fill"></i> <span>My Plan</span></a>
-                </li>
-
-                <li class="nav-item my-1">
                     <a class="nav-link d-flex align-items-center rounded-pill <?php if($page=='All Meals'){echo 'active';}?>" href="all-meals"><i class="bi bi-egg-fried"></i> <span>All Meals</span></a>
                 </li>
 
                 <li class="nav-item my-1">
-                    <a class="nav-link d-flex align-items-center rounded-pill <?php if($page=='Podcast'){echo 'active';}?>" href="podcast">
+                    <a class="nav-link d-flex align-items-center rounded-pill <?php if($page=='Media'){echo 'active';}?>" href="media">
                         <i class="bi bi-collection-play-fill"></i> 
-                        <span>Podcast</span>
+                        <span>Media</span>
                     </a>
                 </li>
 
                 <li class="nav-item my-1">
-                    <a class="nav-link d-flex align-items-center rounded-pill" href="support">
+                    <a class="nav-link d-flex align-items-center rounded-pill <?php if($page=='Support'){echo 'active';}?>" href="support">
                         <i class="bi bi-headset"></i> <span>Support</span> 
-                        <span class="badge badge-sm rounded-pill me-n2 bg-danger-subtle text-danger ms-auto">2</span>
+                        <?php
+                            $countEnquiries = mysqli_query($conn, "SELECT supportID FROM support WHERE status='Open'");
+                            echo "<span class='badge badge-sm rounded-pill me-n2 bg-danger-subtle text-danger ms-auto'>".number_format(mysqli_num_rows($countEnquiries), 0, '.', ',')."</span>"
+                        ?>
                     </a>
                 </li>
 
@@ -95,7 +94,7 @@
                 </li>
                 
                 <li class="nav-item my-1">
-                    <a class="nav-link d-flex align-items-center rounded-pill <?php if($page=='Admins'){echo 'active';}?>" href="profile">
+                    <a class="nav-link d-flex align-items-center rounded-pill <?php if($page=='Admins'){echo 'active';}?>" href="admins">
                         <i class="bi bi-people-fill"></i> <span>Admins</span> 
                     </a>
                 </li>

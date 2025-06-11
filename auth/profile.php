@@ -17,11 +17,11 @@ include "../config/db.php";
         {
             $conn=mysqli_query($conn,"UPDATE admin SET firstName='$firstName', lastName='$lastName', firstName='$firstName', email='$email', where id='".$_SESSION['id']."'");
             $_SESSION['success_message'] = "Profile updated 👍";
-            echo "<meta http-equiv='refresh' content='5; URL=account'>";
+            echo "<meta http-equiv='refresh' content='0; URL=account'>";
         }
         else
         {
             $_SESSION['error_message'] = "Error updating profile.".mysqli_error($conn);
-            echo "<meta http-equiv='refresh' content='5; URL=account'>";
+            echo "<meta http-equiv='refresh' content='0; URL=account'>";
         }
     }

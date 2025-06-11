@@ -13,7 +13,7 @@
                     <header class="border-bottom mb-10">
                         <div class="row align-items-center">
                             <div class="col-sm-6 col-12">
-                                <h1 class="ls-tight">Account Settings</h1>
+                                <h3 class="ls-tight">Account Settings</h3>
                             </div>
                         </div>
                         <ul class="nav nav-tabs nav-tabs-flush gap-6 overflow-x border-0 mt-4">
@@ -103,34 +103,4 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-    <script src="assets/js/datatable.js"></script>
-    <script src="assets/js/main.js"></script>
-    <!--Start of Tawk.to Script-->
-    <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/660807b3a0c6737bd1267a8e/1hq7ls5s0';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-    </script>
-    <!--End of Tawk.to Script-->
-    
-    <!-- Password Matching-->
-    <script>
-        $('#confirmpassword').on('keyup', function () {
-            if ($('#newpassword').val() == $('#confirmpassword').val()) {
-                $('#message').html('Password matched😜').css('color', 'green');
-            } else
-                $('#message').html('Password did not match😡').css('color', 'red');
-        });
-    </script>
-
-</body>
-
-</html>
+<?php include "./components/footer.php"; ?>

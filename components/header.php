@@ -23,11 +23,12 @@ if (isset($_GET['logout'])) {
     <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
     <title>Giolee :: Admin Dashboard</title>
     <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="assets/css/utility.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="assets/css/datatable.css">
     <link rel="stylesheet" href="assets/css/font/fonts.css">
-    <link rel="icon" type="image/png" href="assets/img/Giolee-favicon.png">
+    <link rel="icon" type="image/png" href="assets/img/giolee-favicon.png">
 
     <style>
         @supports (animation: grow .5s cubic-bezier(.25, .25, .25, 1) forwards) {

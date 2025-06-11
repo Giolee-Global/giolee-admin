@@ -4,25 +4,10 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="assets/js/datatable.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/app.js"></script>
     <script src="assets/js/delete.js"></script>
     <script src="assets/js/view.js"></script>
     <script src="assets/js/switcher.js"></script>
-
-    <script>
-        //Greet User
-        var time = new Date().getHours();
-        if (time < 4) {
-            xgreeting = "You should be in bed 🙄!";
-        } else if (time < 12) {
-            xgreeting = "Good morning 🌤"; //wash your hands
-        } else if (time < 16) {
-            xgreeting = "It's lunch 🍛 time "; //what's on the menu!
-        } else {
-            xgreeting = "Good Evening 🌙 "; //how was your day?
-        }
-        document.getElementById("greet").innerHTML = xgreeting;
-    </script>
-
 
     <script>
         const btn = document.querySelector(".button");
@@ -32,30 +17,72 @@
     </script>
 
     <script>
-        new DataTable('#subscription');
+        $('.btn').on('click', function() {
+                var $this = $(this);
+            $this.button('loading');
+                setTimeout(function() {
+                $this.button('reset');
+            }, 8000);
+        });
+    </script>
+
+    <script>
+        new DataTable('#admins');
+        new DataTable('#support');
     </script>
 
     <?php
-    if (isset($_SESSION['sub_error_message'])) {
+    if (isset($_SESSION['success_message'])) {
     ?>
         <script>
             Swal.fire({
-                text: "<?php echo $_SESSION['sub_error_message']; ?>",
-                icon: "error",
-                showCancelButton: false,
-                showConfirmButton: true,
-                confirmButtonText: 'Upgrade Now',
-                confirmButtonColor: '#FF3366',
-                timer: 6000
-            }).then(function() {
-                window.location = "./subscription";
+                text: "<?php echo $_SESSION['success_message']; ?>",
+                icon: "success",
+                showCancelButton: true,
+                showConfirmButton: false,
+                cancelButtonText: 'Close Now',
+                cancelButtonColor: '#FF3366',
+                timer: 4000
             });
         </script>
     <?php
-        unset($_SESSION['sub_error_message']);
+        unset($_SESSION['success_message']);
     }
     ?>
 
-    </body>
+    <?php
+    if (isset($_SESSION['error_message'])) {
+    ?>
+        <script>
+            Swal.fire({
+                text: "<?php echo $_SESSION['error_message']; ?>",
+                icon: "error",
+                showCancelButton: true,
+                showConfirmButton: false,
+                cancelButtonText: 'Close Now',
+                cancelButtonColor: '#FF3366',
+                timer: 4000
+            });
+        </script>
+    <?php
+        unset($_SESSION['error_message']);
+    }
+    ?>
 
-    </html>
+    <!-- <script>
+        Swal.fire({
+            text: "<?php echo $_SESSION['error_message']; ?>",
+            icon: "error",
+            showCancelButton: false,
+            showConfirmButton: true,
+            confirmButtonText: 'Upgrade Now',
+            confirmButtonColor: '#FF3366',
+            timer: 6000
+        }).then(function() {
+            window.location = "./subscription";
+        });
+    </script> -->
+
+</body>
+
+</html>

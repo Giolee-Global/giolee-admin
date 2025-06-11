@@ -29,19 +29,61 @@ include "./components/modals.php";
                             <div class="vstack gap-3 gap-md-6">
                                 <div class="row row-cols-xl-4 g-3 g-xl-6">
                                     <div class="col">
-                                        <div class="card">
-                                            <div class="p-4 mb-5">
-                                                <h6 class="text-limit text-muted fw-normal mb-5">Website Traffic</h6>
-                                                <span class="d-block h2 ls-tight fw-bold">25.040,00</span>
+                                        <div class="card border-primary-hover">
+                                            <div class="card-body p-4">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <div class="icon icon-shape w-rem-15 h-rem-15 bg-danger bg-opacity-25 text-danger" style="font-size: 1.3rem;"><i class="bi bi-stoplights"></i></div>
+                                                    <h5 class="stretched-link">Website Traffic</h5>
+                                                </div>
+                                                <?php
+                                                    $countTraffic = mysqli_query($conn, "SELECT id FROM traffic");
+                                                    echo "<div class='text-2xl text-heading ls-tight mt-3 ms-1'>".number_format(mysqli_num_rows($countTraffic), 0, '.', ',')."</div>"
+                                                ?>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="col">
-                                        <div class="card">
-                                            <div class="p-4 mb-5">
-                                                <h6 class="text-limit text-muted fw-normal mb-5">Website Traffic</h6>
-                                                <span class="d-block h2 ls-tight fw-bold">25.040,00</span>
+                                        <div class="card border-primary-hover">
+                                            <div class="card-body p-4">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <div class="icon icon-shape w-rem-15 h-rem-15 bg-secondary bg-opacity-25 text-secondary" style="font-size: 1.3rem;"><i class="bi bi-people"></i></div>
+                                                    <h5 class="stretched-link">Administrators</h5>
+                                                </div>
+                                                <?php
+                                                    $countAdmin = mysqli_query($conn, "SELECT adminID FROM admin");
+                                                    echo "<div class='text-2xl text-heading ls-tight mt-3 ms-1'>".number_format(mysqli_num_rows($countAdmin), 0, '.', ',')."</div>"
+                                                ?>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="card border-primary-hover">
+                                            <div class="card-body p-4">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <div class="icon icon-shape w-rem-15 h-rem-15 bg-primary bg-opacity-25 text-primary" style="font-size: 1.3rem;"><i class="bi bi-headset"></i></div>
+                                                    <h5 class="stretched-link">Enquiries</h5>
+                                                </div>
+                                                <?php
+                                                    $countEnquiries = mysqli_query($conn, "SELECT supportID FROM support");
+                                                    echo "<div class='text-2xl text-heading ls-tight mt-3 ms-1'>".number_format(mysqli_num_rows($countEnquiries), 0, '.', ',')."</div>"
+                                                ?>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="card border-primary-hover">
+                                            <div class="card-body p-4">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <div class="icon icon-shape w-rem-15 h-rem-15 bg-success bg-opacity-25 text-success" style="font-size: 1.3rem;"><i class="bi bi-file-pdf"></i></div>
+                                                    <h5 class="stretched-link">Quotes</h5>
+                                                </div>
+                                                <?php
+                                                    $countEnquiries = mysqli_query($conn, "SELECT supportID FROM support");
+                                                    echo "<div class='text-2xl text-heading ls-tight mt-3 ms-1'>".number_format(mysqli_num_rows($countEnquiries), 0, '.', ',')."</div>"
+                                                ?>
                                             </div>
                                         </div>
                                     </div>
@@ -54,78 +96,87 @@ include "./components/modals.php";
                         <div class="col-xxl-12">
                             <div class="vstack gap-3 gap-md-6">
                                 <div class="row g-3 g-xl-6">
-                                    <div class="col-xl-5">
-                                        <div class="card">
-                                            <div class="card-body pb-3">
-                                                <h5 class="mb-3">Asset Allocation</h5>
-                                                <div class="list-group list-group-flush">
-                                                    <div class="list-group-item d-flex align-items-center border-0 py-3">
-                                                        <div class="flex-none w-rem-10 h-rem-10">
-                                                            <img src="../img/crypto/icon/btc.svg" class="w-100" alt="...">
-                                                        </div>
-                                                        <div class="flex-fill ms-4 text-limit">
-                                                            <div class="d-flex align-items-center justify-content-between">
-                                                                <a href="#" class="d-block text-sm text-heading fw-bold">Bitcoin</a> 
-                                                                <span class="text-muted text-xs fw-semibold">47%</span>
-                                                            </div>
-                                                            <div class="progress progress-sm my-1">
-                                                                <div class="progress-bar bg-primary" role="progressbar" style="width:47%" aria-valuenow="47" aria-valuemin="0" aria-valuemax="100"></div>
-                                                            </div>
-                                                            <div class="d-flex justify-content-between text-xs text-muted text-end mt-1">
-                                                                <div>
-                                                                    <span class="font-weight-bold text-muted">Price: $0.32</span>
-                                                                </div>
-                                                                <div>
-                                                                    <p class="card-text text-muted">
-                                                                        <time datetime="2020-06-23">Value: $$23,000.00</time>
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="text-end ms-7">
-                                                            <div class="dropdown">
-                                                                <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                    <i class="bi bi-three-dots-vertical"></i>
-                                                                </a>
-                                                                <div class="dropdown-menu dropdown-menu-end">
-                                                                    <a href="#!" class="dropdown-item">Action </a>
-                                                                    <a href="#!" class="dropdown-item">Another action </a>
-                                                                    <a href="#!" class="dropdown-item">Something else here</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
                                     <div class="col-xl-7">
                                         <div class="card">
                                             <div class="card-body pb-0">
                                                 <div class="d-flex justify-content-between align-items-center">
-                                                    <div><h5>Transaction History</h5>
+                                                    <div>
+                                                        <h5>Recent Enquiries</h5>
+                                                    </div>
+                                                    <div class="hstack align-items-center">
+                                                        <a href="support" class="text-muted">View all <i class="bi bi-arrow-right"></i></a>
+                                                    </div>
                                                 </div>
+                                                <?php
+                                                $support_id = 1;
+                                                $select_query = "SELECT * FROM support ORDER BY requestDate ASC LIMIT 6";
+                                                $result = mysqli_query($conn, $select_query);
+                                                if (mysqli_num_rows($result) > 0) {
+                                                    // output data of each row
+                                                    while ($row = mysqli_fetch_assoc($result)) {
+                                                        $supportID = $row['supportID'];
+                                                        $firstName = $row['firstName'];
+                                                        $lastName = $row['lastName'];
+                                                        $email = $row['email'];
+                                                        $phone = $row['phone'];
+                                                        $status = $row['status'];
+                                                        $request = $row['request'];
+                                                        $requestlength=25; // Define how many character you want to display.
+                                                        $request = substr($request, 0, $requestlength);
+                                                        $requestDate = $row['requestDate'];
+                                                        $date = strtotime($requestDate);
+                                                        switch ($status) {
+                                                            case "Closed";
+                                                                $class  = 'bg-danger';
+                                                                $text = 'text-danger';
+                                                                break;
+                                                            case "Open";
+                                                                $class  = 'bg-success';
+                                                                $text = 'text-success';
+                                                                break;
+                                                            default:
+                                                                $class  = '';
+                                                        }
+                                                ?>
+                                                <div class="list-group list-group-flush">
+                                                    <div class="list-group-item d-flex align-items-center justify-content-between gap-6">
+                                                        <div class="d-flex align-items-center gap-3">
+                                                            <div class="icon icon-shape rounded-circle icon-sm flex-none w-rem-10 h-rem-10 text-sm bg-primary bg-opacity-25 text-primary">
+                                                                <i class="bi bi-headset"></i>
+                                                            </div>
+                                                            <div class="">
+                                                                <span class="d-block text-heading text-sm fw-semibold"><?php echo $firstName; ?></span>
+                                                                <span class="d-none d-sm-block text-muted text-xs"><?php echo date('j F Y', $date); ?></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-none d-md-block text-sm"><?php echo $request; ?>...</div>
+                                                        <div class="d-none d-md-block">
+                                                            <span class="badge <? echo $class; ?> bg-opacity-25 text-xs <? echo $text; ?>"><?php echo $status; ?></span>
+                                                        </div>
+                                                        <div class="text-end">
+                                                            <a href="view-support?id=<?php echo $supportID; ?>" class='btn btn-dark btn-sm'><i class="bi bi-eye"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <?php
+                                                        $support_id++;
+                                                    }
+                                                }
+                                                ?>
                                             </div>
-                                            <div class="list-group list-group-flush">
-                                                <div class="list-group-item d-flex align-items-center justify-content-between gap-6">
-                                                    <div class="d-flex align-items-center gap-3">
-                                                        <div class="icon icon-shape rounded-circle icon-sm flex-none w-rem-10 h-rem-10 text-sm bg-primary bg-opacity-25 text-primary">
-                                                            <i class="bi bi-send-fill"></i>
-                                                        </div>
-                                                        <div class="">
-                                                            <span class="d-block text-heading text-sm fw-semibold">Cardano </span>
-                                                            <span class="d-none d-sm-block text-muted text-xs">2 days ago</span>
-                                                        </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-5">
+                                        <div class="card">
+                                            <div class="card-body pb-0">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div>
+                                                        <h5>Website Traffic</h5>
                                                     </div>
-                                                    <div class="d-none d-md-block text-sm">0xd029384sd343fd...eq23</div>
-                                                    <div class="d-none d-md-block">
-                                                        <span class="badge bg-danger bg-opacity-25 text-danger">Canceled</span>
-                                                    </div>
-                                                    <div class="text-end">
-                                                        <span class="d-block text-heading text-sm fw-bold">+0.2948 BTC </span>
-                                                        <span class="d-block text-muted text-xs">+$10,930.90</span>
-                                                    </div>
+                                                </div>
+                                                <div class="mx-n4">
+                                                    <div id="chart-traffic" data-height="250"></div>
                                                 </div>
                                             </div>
                                         </div>
