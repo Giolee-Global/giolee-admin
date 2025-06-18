@@ -48,3 +48,27 @@ if (isset($_POST['delete_support_btn'])) {
     }
 
 }
+
+
+
+// Delete Quote script
+if (isset($_POST['delete_quote_btn'])) {
+
+    $id = $_GET['id'];
+
+    $id = $conn->real_escape_string($_POST['id']);
+
+    $query = "DELETE FROM quote WHERE quoteID = '$id'";
+    $result = mysqli_query($conn, $query);
+
+    if (mysqli_affected_rows($conn) > 0 ) {
+        $_SESSION['success_message'] = "Quotation Request Deleted";
+        echo "<meta http-equiv='refresh' content='0; URL=quote'>";
+        exit();
+    }else{
+        $_SESSION['error_message'] = "Error deleting quote request.";
+        echo "<meta http-equiv='refresh' content='0; URL=quote'>";
+        exit();
+    }
+
+}

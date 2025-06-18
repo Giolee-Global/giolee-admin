@@ -1,5 +1,5 @@
 <?php
-    $page = "Support";
+    $page = "Quote";
     include "./components/header.php";
     include "./components/modals.php";
     require_once "./auth/queries.php";
@@ -15,7 +15,7 @@
                     <div class="mb-6 mb-xl-10">
                         <div class="row g-3 align-items-center">
                             <div class="col">
-                                <h3 class="ls-tight">Support</h3>
+                                <h3 class="ls-tight">Quote</h3>
                             </div>
                         </div>
                     </div>
@@ -26,7 +26,7 @@
                                 <div class="card">
                                     <div class="card-body pb-0">
                                         <div class="table-responsive mb-10 mt-5">
-                                            <table id="support" class="table table-hover table-striped table-sm table-nowrap">
+                                            <table id="quote" class="table table-hover table-striped table-sm table-nowrap">
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">
@@ -34,7 +34,7 @@
                                                                 <span>Full Name</span>
                                                             </div>
                                                         </th>
-                                                        <th scope="col">Email</th>
+                                                        <th scope="col">Company</th>
                                                         <th scope="col">Phone</th>
                                                         <th scope="col">Enquiry Date</th>
                                                         <th scope="col">Status</th>
@@ -44,16 +44,16 @@
 
                                                 <tbody>
                                                     <?php
-                                                    $support_id = 1;
-                                                    $select_query = "SELECT * FROM support ORDER BY requestDate ASC";
+                                                    $quote_id = 1;
+                                                    $select_query = "SELECT * FROM quote ORDER BY requestDate ASC";
                                                     $result = mysqli_query($conn, $select_query);
                                                     if (mysqli_num_rows($result) > 0) {
                                                         // output data of each row
                                                         while ($row = mysqli_fetch_assoc($result)) {
-                                                            $supportID = $row['supportID'];
+                                                            $quoteID = $row['quoteID'];
                                                             $firstName = $row['firstName'];
                                                             $lastName = $row['lastName'];
-                                                            $email = $row['email'];
+                                                            $company = $row['company'];
                                                             $phone = $row['phone'];
                                                             $status = $row['status'];
                                                             $requestDate = $row['requestDate'];
@@ -78,17 +78,17 @@
                                                                         <div><span class="d-block text-heading fw-bold"><?php echo $firstName; ?> <?php echo $lastName; ?></span></div>
                                                                     </div>
                                                                 </td>
-                                                                <td><?php echo $email; ?></td>
+                                                                <td><?php echo $company; ?></td>
                                                                 <td><?php echo $phone; ?></td>
                                                                 <td><?php echo date('j F Y', $date); ?></td>
                                                                 <td><span class="badge <? echo $class; ?> bg-opacity-25 text-xs <? echo $text; ?>"><?php echo $status; ?></span></td>
                                                                 <td class="text-end">
-                                                                    <a href="view-support?id=<?php echo $supportID; ?>" class='btn btn-dark btn-sm'><i class="bi bi-eye"></i></a>
-                                                                    <button type="button" data-id="<? echo $supportID; ?>" onclick="confirmSupportDelete(this);" class='btn btn-danger btn-sm'><i class="bi bi-trash"></i></button>
+                                                                    <a href="view-quote?id=<?php echo $quoteID; ?>" class='btn btn-dark btn-sm'><i class="bi bi-eye"></i></a>
+                                                                    <button type="button" data-id="<? echo $quoteID; ?>" onclick="confirmQuoteDelete(this);" class='btn btn-danger btn-sm'><i class="bi bi-trash"></i></button>
                                                                 </td>
                                                             </tr>
                                                     <?php
-                                                            $support_id++;
+                                                            $quote_id++;
                                                         }
                                                     }
                                                     ?>

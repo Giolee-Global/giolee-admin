@@ -13,7 +13,6 @@ if (isset($_POST['login_btn'])) {
     $password = $conn->real_escape_string($_POST['password']);
     $email = $conn->real_escape_string($_POST['email']);
     $status = $conn->real_escape_string($_POST['status']);
-    $status = $conn->real_escape_string($_POST['status']);
     $phone = $conn->real_escape_string($_POST['phone']);
 
     $password = sha1($password);

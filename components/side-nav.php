@@ -36,41 +36,67 @@
                 </li>
 
                 <li class="nav-item my-1">
-                    <a class="nav-link d-flex align-items-center rounded-pill" href="#sidebar-pages" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebar-pages">
-                        <i class="bi bi-file-earmark-break-fill"></i> 
-                        <span>Pages</span> 
+                    <a class="nav-link d-flex align-items-center rounded-pill" href="#sidebar-pages-about" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebar-pages-about">
+                        <i class="bi bi-buildings-fill"></i> 
+                        <span>About</span> 
                         <span class="badge badge-sm rounded-pill me-n2 bg-success-subtle text-success ms-auto"></span>
                     </a>
                     <div
-                        class="collapse" id="sidebar-pages">
+                        class="collapse" id="sidebar-pages-about">
                         <ul class="nav nav-sm flex-column mt-1">
-                            <li class="nav-item"><a href="page-overview.html" class="nav-link">Overview</a></li>
-                            <li class="nav-item"><a href="page-table-listing.html" class="nav-link">Table Listing</a></li>
-                            <li class="nav-item"><a href="page-details.html" class="nav-link">Details</a></li>
-                            <li class="nav-item"><a href="page-create-form.html" class="nav-link">Create Form</a></li>
-                            <li class="nav-item"><a href="page-list.html" class="nav-link">Large List</a></li>
-                            <li class="nav-item"><a href="page-checklist.html" class="nav-link">Checklist</a></li>
-                            <li class="nav-item"><a href="page-collection.html" class="nav-link">Collection</a></li>
+                            <li class="nav-item"><a href="about" class="nav-link">About us</a></li>
+                            <li class="nav-item"><a href="ceo-desk" class="nav-link">The CEO's Desk</a></li>
+                            <li class="nav-item"><a href="team" class="nav-link">Team</a></li>
+                            <li class="nav-item"><a href="faq" class="nav-link">FAQ's</a></li>
                         </ul>
                         </div>
                 </li>
 
                 <li class="nav-item my-1">
-                    <a class="nav-link d-flex align-items-center rounded-pill <?php if($page=='Booking'){echo 'active';}?>" href="booking"><i class="bi bi-calendar-date-fill"></i> <span>Book a Consultation</span> </a>
+                    <a class="nav-link d-flex align-items-center rounded-pill" href="#sidebar-pages" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebar-pages">
+                        <i class="bi bi-file-earmark-break-fill"></i> 
+                        <span>Services</span> 
+                        <span class="badge badge-sm rounded-pill me-n2 bg-success-subtle text-success ms-auto"></span>
+                    </a>
+                    <div
+                        class="collapse" id="sidebar-pages">
+                        <ul class="nav nav-sm flex-column mt-1">
+                            <li class="nav-item"><a href="oil-spill-response" class="nav-link">Oil Spill Response</a></li>
+                            <li class="nav-item"><a href="oil-spill-clean-up" class="nav-link">Oil Spill Clean Up</a></li>
+                            <li class="nav-item"><a href="waste-management" class="nav-link">Waste Management</a></li>
+                            <li class="nav-item"><a href="water-treatment" class="nav-link">Water Treatment</a></li>
+                            <li class="nav-item"><a href="environmental-consultancy" class="nav-link">Environmental Consultancy</a></li>
+                            <li class="nav-item"><a href="laboratory-services" class="nav-link">Laboratory Services</a></li>
+                            <li class="nav-item"><a href="mangrove-restoration" class="nav-link">Mangrove Restoration</a></li>
+                            <li class="nav-item"><a href="training" class="nav-link">Training</a></li>
+                            <li class="nav-item"><a href="decommissioning" class="nav-link">Decommissioning</a></li>
+                        </ul>
+                        </div>
                 </li>
 
                 <li class="nav-item my-1">
-                    <a class="nav-link d-flex align-items-center rounded-pill <?php if($page=='Subscription'){echo 'active';}?>" href="subscription"><i class="bi bi-bookmarks-fill"></i> <span>Subscription</span></a>
+                    <a class="nav-link d-flex align-items-center rounded-pill <?php if($page=='Projects'){echo 'active';}?>" href="projects"><i class="bi bi-tools"></i> <span>Projects</span> </a>
                 </li>
 
                 <li class="nav-item my-1">
-                    <a class="nav-link d-flex align-items-center rounded-pill <?php if($page=='All Meals'){echo 'active';}?>" href="all-meals"><i class="bi bi-egg-fried"></i> <span>All Meals</span></a>
+                    <a class="nav-link d-flex align-items-center rounded-pill <?php if($page=='Certifications'){echo 'active';}?>" href="certifications"><i class="bi bi-bookmarks-fill"></i> <span>Certifications</span></a>
                 </li>
+
 
                 <li class="nav-item my-1">
                     <a class="nav-link d-flex align-items-center rounded-pill <?php if($page=='Media'){echo 'active';}?>" href="media">
                         <i class="bi bi-collection-play-fill"></i> 
                         <span>Media</span>
+                    </a>
+                </li>
+
+                <li class="nav-item my-1">
+                    <a class="nav-link d-flex align-items-center rounded-pill <?php if($page=='Quote'){echo 'active';}?>" href="quote">
+                        <i class="bi bi-file-earmark-pdf-fill"></i> <span>Quote</span> 
+                        <?php
+                            $countQuote = mysqli_query($conn, "SELECT quoteID FROM quote WHERE status='Open'");
+                            echo "<span class='badge badge-sm rounded-pill me-n2 bg-danger-subtle text-danger ms-auto'>".number_format(mysqli_num_rows($countQuote), 0, '.', ',')."</span>"
+                        ?>
                     </a>
                 </li>
 

@@ -94,3 +94,32 @@ include "./config/db.php";
         }
 
     }
+
+
+    //Update Quote Query
+    if (isset($_POST['update_quote_btn'])) {
+
+        $quoteID = isset($_GET['quoteID']) ? $_GET['quoteID'] : '';
+
+        $quoteID = $conn->real_escape_string($_POST['quoteID']);
+        $status = $conn->real_escape_string($_POST['status']);
+
+
+        $sql=mysqli_query($conn,"SELECT * FROM quote where quoteID='$quoteID'");
+        $result=mysqli_fetch_array($sql);
+        if($result>0){
+            $conn=mysqli_query($conn,"UPDATE quote SET status='Closed' WHERE quoteID='$quoteID'");
+
+            $_SESSION['success_message'] = "Quote Request Closed";
+            echo "<meta http-equiv='refresh' content='0; URL=view-quote?id=$quoteID'>";
+            exit();
+
+        }else {
+
+            $_SESSION['error_message'] = "Error closing quote request".mysqli_error($conn);
+            echo "<meta http-equiv='refresh' content='0; URL=view-quote?id=$quoteID'>";
+            exit();
+
+        }
+
+    }

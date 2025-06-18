@@ -81,8 +81,8 @@ include "./components/modals.php";
                                                     <h5 class="stretched-link">Quotes</h5>
                                                 </div>
                                                 <?php
-                                                    $countEnquiries = mysqli_query($conn, "SELECT supportID FROM support");
-                                                    echo "<div class='text-2xl text-heading ls-tight mt-3 ms-1'>".number_format(mysqli_num_rows($countEnquiries), 0, '.', ',')."</div>"
+                                                    $countQuote = mysqli_query($conn, "SELECT quoteID FROM quote");
+                                                    echo "<div class='text-2xl text-heading ls-tight mt-3 ms-1'>".number_format(mysqli_num_rows($countQuote), 0, '.', ',')."</div>"
                                                 ?>
                                             </div>
                                         </div>
@@ -172,12 +172,60 @@ include "./components/modals.php";
                                             <div class="card-body pb-0">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <div>
-                                                        <h5>Website Traffic</h5>
+                                                        <h5>Recent Quote</h5>
+                                                    </div>
+                                                    <div class="hstack align-items-center">
+                                                        <a href="quote" class="text-muted">View all <i class="bi bi-arrow-right"></i></a>
                                                     </div>
                                                 </div>
-                                                <div class="mx-n4">
-                                                    <div id="chart-traffic" data-height="250"></div>
+                                                <?php
+                                                $quote_id = 1;
+                                                $select_query = "SELECT * FROM quote ORDER BY requestDate ASC LIMIT 6";
+                                                $result = mysqli_query($conn, $select_query);
+                                                if (mysqli_num_rows($result) > 0) {
+                                                    // output data of each row
+                                                    while ($row = mysqli_fetch_assoc($result)) {
+                                                        $quoteID = $row['quoteID'];
+                                                        $firstName = $row['firstName'];
+                                                        $lastName = $row['lastName'];
+                                                        $requestlength=25; // Define how many character you want to display.
+                                                        $request = substr($request, 0, $requestlength);
+                                                        $requestDate = $row['requestDate'];
+                                                        $date = strtotime($requestDate);
+                                                        switch ($status) {
+                                                            case "Closed";
+                                                                $class  = 'bg-danger';
+                                                                $text = 'text-danger';
+                                                                break;
+                                                            case "Open";
+                                                                $class  = 'bg-success';
+                                                                $text = 'text-success';
+                                                                break;
+                                                            default:
+                                                                $class  = '';
+                                                        }
+                                                ?>
+                                                <div class="list-group list-group-flush">
+                                                    <div class="list-group-item d-flex align-items-center justify-content-between gap-6">
+                                                        <div class="d-flex align-items-center gap-3">
+                                                            <div class="icon icon-shape rounded-circle icon-sm flex-none w-rem-10 h-rem-10 text-sm bg-primary bg-opacity-25 text-primary">
+                                                                <i class="bi bi-headset"></i>
+                                                            </div>
+                                                            <div class="">
+                                                                <span class="d-block text-heading text-sm fw-semibold"><?php echo $firstName; ?></span>
+                                                                <span class="d-none d-sm-block text-muted text-xs"><?php echo date('j F Y', $date); ?></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text-end">
+                                                            <a href="view-quote?id=<?php echo $quoteID; ?>" class='btn btn-dark btn-sm'><i class="bi bi-eye"></i></a>
+                                                        </div>
+                                                    </div>
                                                 </div>
+                                                <?php
+                                                        $quote_id++;
+                                                    }
+                                                }
+                                                ?>
                                             </div>
                                         </div>
                                     </div>

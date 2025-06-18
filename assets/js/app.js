@@ -19,3 +19,11 @@ document.getElementById("greet").innerHTML = xgreeting;
 function goBack() {
   window.history.back()
 }
+
+
+//CKeditor
+ClassicEditor
+.create( document.querySelector( '#oilSpillResponse' ) )
+.catch( error => {
+    console.error( error );
+} );

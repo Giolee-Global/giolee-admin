@@ -8,6 +8,8 @@
     <script src="assets/js/delete.js"></script>
     <script src="assets/js/view.js"></script>
     <script src="assets/js/switcher.js"></script>
+    <script src="https://media-library.cloudinary.com/global/all.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.2.1/classic/ckeditor.js"></script>
 
     <script>
         const btn = document.querySelector(".button");
@@ -29,6 +31,15 @@
     <script>
         new DataTable('#admins');
         new DataTable('#support');
+        new DataTable('#quote');
+    </script>
+
+    <script>
+        ClassicEditor
+        .create( document.querySelector( '#oilSpillResponse' ) )
+        .catch( error => {
+            console.error( error );
+        } );
     </script>
 
     <?php
