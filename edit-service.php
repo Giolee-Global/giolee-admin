@@ -34,6 +34,11 @@
                             <div class="col">
                                 <h3 class="ls-tight"><?php echo $title; ?></h3>
                             </div>
+                            <div class="col">
+                                <div class="hstack gap-2 justify-content-end">
+                                    <a href="services"  class="btn btn-sm btn-neutral d-sm-inline-flex"><span class="pe-2"><i class="bi bi-arrow-left"></i> </span><span>Go Back</span></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
 

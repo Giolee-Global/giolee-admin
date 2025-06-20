@@ -46,7 +46,7 @@
                                                 <tbody>
                                                     <?php
                                                     $admin_id = 1;
-                                                    $select_query = "SELECT * FROM services ORDER BY dateCreated ASC";
+                                                    $select_query = "SELECT * FROM services ORDER BY serviceID ASC";
                                                     $result = mysqli_query($conn, $select_query);
                                                     if (mysqli_num_rows($result) > 0) {
                                                         // output data of each row
