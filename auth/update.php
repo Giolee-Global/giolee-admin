@@ -123,3 +123,36 @@ include "./config/db.php";
         }
 
     }
+
+
+
+    //Update Service Query
+    if (isset($_POST['update_service_btn'])) {
+
+        $serviceID = isset($_GET['serviceID']) ? $_GET['serviceID'] : '';
+
+        $serviceID = $conn->real_escape_string($_POST['serviceID']);
+        $title = $conn->real_escape_string($_POST['title']);
+        $firstParagraph = $conn->real_escape_string($_POST['firstParagraph']);
+        $secondParagraph = $conn->real_escape_string($_POST['secondParagraph']);
+        $thirdParagraph = $conn->real_escape_string($_POST['thirdParagraph']);
+
+
+        $sql=mysqli_query($conn,"SELECT * FROM services where serviceID='$serviceID'");
+        $result=mysqli_fetch_array($sql);
+        if($result>0){
+            $conn=mysqli_query($conn,"UPDATE services SET title='$title', firstParagraph='$firstParagraph', secondParagraph='$secondParagraph', thirdParagraph='$thirdParagraph' WHERE serviceID='$serviceID'");
+
+            $_SESSION['success_message'] = "Service Updated";
+            echo "<meta http-equiv='refresh' content='0; URL=edit-service?id=$serviceID'>";
+            exit();
+
+        }else {
+
+            $_SESSION['error_message'] = "Error updating service".mysqli_error($conn);
+            echo "<meta http-equiv='refresh' content='0; URL=edit-service?id=$serviceID'>";
+            exit();
+
+        }
+
+    }

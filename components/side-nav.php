@@ -53,25 +53,7 @@
                 </li>
 
                 <li class="nav-item my-1">
-                    <a class="nav-link d-flex align-items-center rounded-pill" href="#sidebar-pages" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebar-pages">
-                        <i class="bi bi-file-earmark-break-fill"></i> 
-                        <span>Services</span> 
-                        <span class="badge badge-sm rounded-pill me-n2 bg-success-subtle text-success ms-auto"></span>
-                    </a>
-                    <div
-                        class="collapse" id="sidebar-pages">
-                        <ul class="nav nav-sm flex-column mt-1">
-                            <li class="nav-item"><a href="oil-spill-response" class="nav-link">Oil Spill Response</a></li>
-                            <li class="nav-item"><a href="oil-spill-clean-up" class="nav-link">Oil Spill Clean Up</a></li>
-                            <li class="nav-item"><a href="waste-management" class="nav-link">Waste Management</a></li>
-                            <li class="nav-item"><a href="water-treatment" class="nav-link">Water Treatment</a></li>
-                            <li class="nav-item"><a href="environmental-consultancy" class="nav-link">Environmental Consultancy</a></li>
-                            <li class="nav-item"><a href="laboratory-services" class="nav-link">Laboratory Services</a></li>
-                            <li class="nav-item"><a href="mangrove-restoration" class="nav-link">Mangrove Restoration</a></li>
-                            <li class="nav-item"><a href="training" class="nav-link">Training</a></li>
-                            <li class="nav-item"><a href="decommissioning" class="nav-link">Decommissioning</a></li>
-                        </ul>
-                        </div>
+                    <a class="nav-link d-flex align-items-center rounded-pill <?php if($page=='Services'){echo 'active';}?>" href="services"><i class="bi bi-file-earmark-break-fill"></i> <span>Services</span> </a>
                 </li>
 
                 <li class="nav-item my-1">

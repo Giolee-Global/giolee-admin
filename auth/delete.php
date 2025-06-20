@@ -39,11 +39,11 @@ if (isset($_POST['delete_support_btn'])) {
 
     if (mysqli_affected_rows($conn) > 0 ) {
         $_SESSION['success_message'] = "Support Enquiry Deleted";
-        echo "<meta http-equiv='refresh' content='0; URL=admins'>";
+        echo "<meta http-equiv='refresh' content='0; URL=support'>";
         exit();
     }else{
         $_SESSION['error_message'] = "Error support enquiry.";
-        echo "<meta http-equiv='refresh' content='0; URL=admins'>";
+        echo "<meta http-equiv='refresh' content='0; URL=support'>";
         exit();
     }
 

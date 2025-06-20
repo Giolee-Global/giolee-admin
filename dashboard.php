@@ -161,6 +161,12 @@ include "./components/modals.php";
                                                 <?php
                                                         $support_id++;
                                                     }
+                                                }else {
+                                                   echo
+                                                   "<div class='text-center mb-5 pb-5 mt-4'>
+                                                    <img src='./assets/img/empty.png' width='120'>
+                                                    <p class='lead'>No Enquiries Yet!</p>
+                                                   </div>";
                                                 }
                                                 ?>
                                             </div>
@@ -224,6 +230,12 @@ include "./components/modals.php";
                                                 <?php
                                                         $quote_id++;
                                                     }
+                                                }else {
+                                                   echo
+                                                   "<div class='text-center mb-5 pb-5 mt-4'>
+                                                    <img src='./assets/img/empty.png' width='120'>
+                                                    <p class='lead'>No Quotes Yet!</p>
+                                                   </div>";
                                                 }
                                                 ?>
                                             </div>

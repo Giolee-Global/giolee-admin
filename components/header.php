@@ -29,6 +29,7 @@ if (isset($_GET['logout'])) {
     <link rel="stylesheet" href="assets/css/datatable.css">
     <link rel="stylesheet" href="assets/css/font/fonts.css">
     <link rel="icon" type="image/png" href="assets/img/giolee-favicon.png">
+    <link rel="stylesheet" href="/richtexteditor/rte_theme_default.css" />
 
     <style>
         @supports (animation: grow .5s cubic-bezier(.25, .25, .25, 1) forwards) {
@@ -69,6 +70,9 @@ if (isset($_GET['logout'])) {
             100% { stroke-dashoffset: 0; }
         }
 
+        .ck-editor__editable {
+            min-height: 200px;
+        }
     </style>
 
 </head>

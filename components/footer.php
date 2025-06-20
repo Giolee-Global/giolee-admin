@@ -1,3 +1,4 @@
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.2.1/classic/ckeditor.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
@@ -8,15 +9,6 @@
     <script src="assets/js/delete.js"></script>
     <script src="assets/js/view.js"></script>
     <script src="assets/js/switcher.js"></script>
-    <script src="https://media-library.cloudinary.com/global/all.js"></script>
-    <script src="https://cdn.ckeditor.com/ckeditor5/41.2.1/classic/ckeditor.js"></script>
-
-    <script>
-        const btn = document.querySelector(".button");
-
-        btn.classList.add("button--loading");
-        btn.classList.remove("button--loading");
-    </script>
 
     <script>
         $('.btn').on('click', function() {
@@ -36,11 +28,22 @@
 
     <script>
         ClassicEditor
-        .create( document.querySelector( '#oilSpillResponse' ) )
-        .catch( error => {
-            console.error( error );
-        } );
+            .create( document.querySelector( '#firstParagraph' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+        ClassicEditor
+            .create( document.querySelector( '#secondParagraph' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+        ClassicEditor
+            .create( document.querySelector( '#thirdParagraph' ) )
+            .catch( error => {
+                console.error( error );
+            } );
     </script>
+    
 
     <?php
     if (isset($_SESSION['success_message'])) {
