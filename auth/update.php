@@ -136,12 +136,15 @@ include "./config/db.php";
         $firstParagraph = $conn->real_escape_string($_POST['firstParagraph']);
         $secondParagraph = $conn->real_escape_string($_POST['secondParagraph']);
         $thirdParagraph = $conn->real_escape_string($_POST['thirdParagraph']);
+        $fourthParagraph = $conn->real_escape_string($_POST['fourthParagraph']);
+        $fifthParagraph = $conn->real_escape_string($_POST['fifthParagraph']);
+        $sixthParagraph = $conn->real_escape_string($_POST['sixthParagraph']);
 
 
         $sql=mysqli_query($conn,"SELECT * FROM services where serviceID='$serviceID'");
         $result=mysqli_fetch_array($sql);
         if($result>0){
-            $conn=mysqli_query($conn,"UPDATE services SET title='$title', firstParagraph='$firstParagraph', secondParagraph='$secondParagraph', thirdParagraph='$thirdParagraph' WHERE serviceID='$serviceID'");
+            $conn=mysqli_query($conn,"UPDATE services SET title='$title', firstParagraph='$firstParagraph', secondParagraph='$secondParagraph', thirdParagraph='$thirdParagraph', fourthParagraph='$fourthParagraph', fifthParagraph='$fifthParagraph', sixthParagraph='$sixthParagraph'  WHERE serviceID='$serviceID'");
 
             $_SESSION['success_message'] = "Service Updated";
             echo "<meta http-equiv='refresh' content='0; URL=edit-service?id=$serviceID'>";

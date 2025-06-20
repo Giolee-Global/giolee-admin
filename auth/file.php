@@ -276,7 +276,7 @@ if (isset($_POST['section_two_upload_btn'])) {
 }
 
 
-//Section Two Gallery Query
+//Section Three Gallery Query
 if (isset($_POST['section_three_upload_btn'])) {
 
     $serviceID = $conn->real_escape_string($_POST['serviceID']);
@@ -334,6 +334,249 @@ if (isset($_POST['section_three_upload_btn'])) {
         } else {
             // Insert new record
             $insert = mysqli_query($conn, "INSERT INTO media_three (serviceID, filePath) VALUES ('$serviceID', '$targetPath')");
+            if ($insert) {
+                $uploadSuccess[] = "$fileName uploaded successfully.";
+            } else {
+                $uploadErrors[] = "Failed to insert record for $fileName: " . mysqli_error($conn);
+            }
+        }
+    }
+
+    // Set session messages
+    if (!empty($uploadSuccess)) {
+        $_SESSION['success_message'] = implode($uploadSuccess);
+    }
+
+    if (!empty($uploadErrors)) {
+        $_SESSION['error_message'] = implode($uploadErrors);
+    }
+
+    // Redirect back
+    echo "<meta http-equiv='refresh' content='0; URL=edit-service?id=$serviceID'>";
+    exit();
+}
+
+
+//Section Four Gallery Query
+if (isset($_POST['section_four_upload_btn'])) {
+
+    $serviceID = $conn->real_escape_string($_POST['serviceID']);
+    $uploadDir = 'upload/';
+    $files = $_FILES['filePath'];
+    $uploadCount = count($files['name']);
+    $uploadErrors = [];
+    $uploadSuccess = [];
+
+    // Ensure upload directory exists
+    if (!is_dir($uploadDir)) {
+        mkdir($uploadDir, 0755, true);
+    }
+
+    for ($i = 0; $i < $uploadCount; $i++) {
+        $fileName = $files['name'][$i];
+        $fileTmp = $files['tmp_name'][$i];
+        $fileType = $files['type'][$i];
+
+        // Only accept image files
+        if (!getimagesize($fileTmp)) {
+            $uploadErrors[] = "$fileName is not a valid image file.";
+            continue;
+        }
+
+        // Sanitize file name and handle duplicates
+        $safeFileName = $conn->real_escape_string($fileName);
+        $targetPath = $uploadDir . $safeFileName;
+
+        if (file_exists($targetPath)) {
+            $uniqueName = uniqid() . '_' . rand(1000, 9999) . '_' . $safeFileName;
+            $targetPath = $uploadDir . $conn->real_escape_string($uniqueName);
+        }
+
+        // Move uploaded file
+        if (!move_uploaded_file($fileTmp, $targetPath)) {
+            $uploadErrors[] = "Failed to move $fileName.";
+            continue;
+        }
+
+        // Check if a media_four record already exists for this serviceID and original file name
+        $checkQuery = mysqli_query($conn, "SELECT mediaID FROM media_four WHERE serviceID = '$serviceID' AND filePath LIKE '%$safeFileName%'");
+
+        if (mysqli_num_rows($checkQuery) > 0) {
+            // Update existing record
+            $existing = mysqli_fetch_assoc($checkQuery);
+            $mediaID = $existing['mediaID'];
+
+            $update = mysqli_query($conn, "UPDATE media_four SET filePath = '$targetPath' WHERE mediaID = '$mediaID'");
+            if ($update) {
+                $uploadSuccess[] = "$fileName updated successfully.";
+            } else {
+                $uploadErrors[] = "Failed to update $fileName: " . mysqli_error($conn);
+            }
+        } else {
+            // Insert new record
+            $insert = mysqli_query($conn, "INSERT INTO media_four (serviceID, filePath) VALUES ('$serviceID', '$targetPath')");
+            if ($insert) {
+                $uploadSuccess[] = "$fileName uploaded successfully.";
+            } else {
+                $uploadErrors[] = "Failed to insert record for $fileName: " . mysqli_error($conn);
+            }
+        }
+    }
+
+    // Set session messages
+    if (!empty($uploadSuccess)) {
+        $_SESSION['success_message'] = implode($uploadSuccess);
+    }
+
+    if (!empty($uploadErrors)) {
+        $_SESSION['error_message'] = implode($uploadErrors);
+    }
+
+    // Redirect back
+    echo "<meta http-equiv='refresh' content='0; URL=edit-service?id=$serviceID'>";
+    exit();
+}
+
+
+//Section Five Gallery Query
+if (isset($_POST['section_five_upload_btn'])) {
+
+    $serviceID = $conn->real_escape_string($_POST['serviceID']);
+    $uploadDir = 'upload/';
+    $files = $_FILES['filePath'];
+    $uploadCount = count($files['name']);
+    $uploadErrors = [];
+    $uploadSuccess = [];
+
+    // Ensure upload directory exists
+    if (!is_dir($uploadDir)) {
+        mkdir($uploadDir, 0755, true);
+    }
+
+    for ($i = 0; $i < $uploadCount; $i++) {
+        $fileName = $files['name'][$i];
+        $fileTmp = $files['tmp_name'][$i];
+        $fileType = $files['type'][$i];
+
+        // Only accept image files
+        if (!getimagesize($fileTmp)) {
+            $uploadErrors[] = "$fileName is not a valid image file.";
+            continue;
+        }
+
+        // Sanitize file name and handle duplicates
+        $safeFileName = $conn->real_escape_string($fileName);
+        $targetPath = $uploadDir . $safeFileName;
+
+        if (file_exists($targetPath)) {
+            $uniqueName = uniqid() . '_' . rand(1000, 9999) . '_' . $safeFileName;
+            $targetPath = $uploadDir . $conn->real_escape_string($uniqueName);
+        }
+
+        // Move uploaded file
+        if (!move_uploaded_file($fileTmp, $targetPath)) {
+            $uploadErrors[] = "Failed to move $fileName.";
+            continue;
+        }
+
+        // Check if a media_five record already exists for this serviceID and original file name
+        $checkQuery = mysqli_query($conn, "SELECT mediaID FROM media_five WHERE serviceID = '$serviceID' AND filePath LIKE '%$safeFileName%'");
+
+        if (mysqli_num_rows($checkQuery) > 0) {
+            // Update existing record
+            $existing = mysqli_fetch_assoc($checkQuery);
+            $mediaID = $existing['mediaID'];
+
+            $update = mysqli_query($conn, "UPDATE media_five SET filePath = '$targetPath' WHERE mediaID = '$mediaID'");
+            if ($update) {
+                $uploadSuccess[] = "$fileName updated successfully.";
+            } else {
+                $uploadErrors[] = "Failed to update $fileName: " . mysqli_error($conn);
+            }
+        } else {
+            // Insert new record
+            $insert = mysqli_query($conn, "INSERT INTO media_five (serviceID, filePath) VALUES ('$serviceID', '$targetPath')");
+            if ($insert) {
+                $uploadSuccess[] = "$fileName uploaded successfully.";
+            } else {
+                $uploadErrors[] = "Failed to insert record for $fileName: " . mysqli_error($conn);
+            }
+        }
+    }
+
+    // Set session messages
+    if (!empty($uploadSuccess)) {
+        $_SESSION['success_message'] = implode($uploadSuccess);
+    }
+
+    if (!empty($uploadErrors)) {
+        $_SESSION['error_message'] = implode($uploadErrors);
+    }
+
+    // Redirect back
+    echo "<meta http-equiv='refresh' content='0; URL=edit-service?id=$serviceID'>";
+    exit();
+}
+
+
+//Section Six Gallery Query
+if (isset($_POST['section_six_upload_btn'])) {
+
+    $serviceID = $conn->real_escape_string($_POST['serviceID']);
+    $uploadDir = 'upload/';
+    $files = $_FILES['filePath'];
+    $uploadCount = count($files['name']);
+    $uploadErrors = [];
+    $uploadSuccess = [];
+
+    // Ensure upload directory exists
+    if (!is_dir($uploadDir)) {
+        mkdir($uploadDir, 0755, true);
+    }
+
+    for ($i = 0; $i < $uploadCount; $i++) {
+        $fileName = $files['name'][$i];
+        $fileTmp = $files['tmp_name'][$i];
+        $fileType = $files['type'][$i];
+
+        // Only accept image files
+        if (!getimagesize($fileTmp)) {
+            $uploadErrors[] = "$fileName is not a valid image file.";
+            continue;
+        }
+
+        // Sanitize file name and handle duplicates
+        $safeFileName = $conn->real_escape_string($fileName);
+        $targetPath = $uploadDir . $safeFileName;
+
+        if (file_exists($targetPath)) {
+            $uniqueName = uniqid() . '_' . rand(1000, 9999) . '_' . $safeFileName;
+            $targetPath = $uploadDir . $conn->real_escape_string($uniqueName);
+        }
+
+        // Move uploaded file
+        if (!move_uploaded_file($fileTmp, $targetPath)) {
+            $uploadErrors[] = "Failed to move $fileName.";
+            continue;
+        }
+
+        // Check if a media_six record already exists for this serviceID and original file name
+        $checkQuery = mysqli_query($conn, "SELECT mediaID FROM media_six WHERE serviceID = '$serviceID' AND filePath LIKE '%$safeFileName%'");
+
+        if (mysqli_num_rows($checkQuery) > 0) {
+            // Update existing record
+            $existing = mysqli_fetch_assoc($checkQuery);
+            $mediaID = $existing['mediaID'];
+
+            $update = mysqli_query($conn, "UPDATE media_six SET filePath = '$targetPath' WHERE mediaID = '$mediaID'");
+            if ($update) {
+                $uploadSuccess[] = "$fileName updated successfully.";
+            } else {
+                $uploadErrors[] = "Failed to update $fileName: " . mysqli_error($conn);
+            }
+        } else {
+            // Insert new record
+            $insert = mysqli_query($conn, "INSERT INTO media_six (serviceID, filePath) VALUES ('$serviceID', '$targetPath')");
             if ($insert) {
                 $uploadSuccess[] = "$fileName uploaded successfully.";
             } else {

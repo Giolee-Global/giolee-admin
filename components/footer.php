@@ -42,6 +42,21 @@
             .catch( error => {
                 console.error( error );
             } );
+        ClassicEditor
+            .create( document.querySelector( '#fourthParagraph' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+        ClassicEditor
+            .create( document.querySelector( '#fifthParagraph' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+        ClassicEditor
+            .create( document.querySelector( '#sixthParagraph' ) )
+            .catch( error => {
+                console.error( error );
+            } );
     </script>
     
 
