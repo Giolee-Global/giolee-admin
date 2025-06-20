@@ -151,7 +151,7 @@
                             </div>
                             <div class="col-md-8 col-xl-8">
                                 <div class="">
-                                    <textarea rows="5" name="fourthParagraph" id="fourthParagraph" class="form-control"><?php echo $thirdParagraph; ?></textarea>
+                                    <textarea rows="5" name="fourthParagraph" id="fourthParagraph" class="form-control"><?php echo $fourthParagraph; ?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -162,7 +162,7 @@
                             </div>
                             <div class="col-md-8 col-xl-8">
                                 <div class="">
-                                    <textarea rows="5" name="fifthParagraph" id="fifthParagraph" class="form-control"><?php echo $thirdParagraph; ?></textarea>
+                                    <textarea rows="5" name="fifthParagraph" id="fifthParagraph" class="form-control"><?php echo $fifthParagraph; ?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -173,7 +173,7 @@
                             </div>
                             <div class="col-md-8 col-xl-8">
                                 <div class="">
-                                    <textarea rows="5" name="sixthParagraph" id="sixthParagraph" class="form-control"><?php echo $thirdParagraph; ?></textarea>
+                                    <textarea rows="5" name="sixthParagraph" id="sixthParagraph" class="form-control"><?php echo $sixthParagraph; ?></textarea>
                                 </div>
                             </div>
                         </div>
