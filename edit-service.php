@@ -55,7 +55,31 @@
                             <div class="col-md-8 col-xl-8">
                                 <div class="input-group">
                                     <input type="file" name="filePath" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" required>
-                                    <button class="btn btn-danger" type="submit" name="breadcrumb_upload_btn" id="inputGroupFileAddon04">Upload Image</button>
+                                    <button class="btn btn-dark" type="submit" name="breadcrumb_upload_btn" id="inputGroupFileAddon04">Upload Image</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST" enctype="multipart/form-data">
+                        <div class="row align-items-center mb-10" style="display: none;">
+                            <div class="col-md-2">
+                                <label class="form-label">Service ID</label>
+                            </div>
+                            <div class="col-md-8 col-xl-5">
+                                <div class="">
+                                    <input type="number" value="<?php echo $serviceID; ?>" name="serviceID" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center mb-10">
+                            <div class="col-md-2">
+                                <label class="form-label">Hero Image</label>
+                            </div>
+                            <div class="col-md-8 col-xl-8">
+                                <div class="input-group">
+                                    <input type="file" name="filePath" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" required>
+                                    <button class="btn btn-dark" type="submit" name="hero_upload_btn" id="inputGroupFileAddon04">Upload Image</button>
                                 </div>
                             </div>
                         </div>
@@ -82,6 +106,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="row align-items-center mb-10">
                             <div class="col-md-2">
                                 <label class="form-label">Section One</label>
@@ -92,6 +117,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="row align-items-center mb-10">
                             <div class="col-md-2">
                                 <label class="form-label">Section Two</label>
@@ -102,6 +128,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="row align-items-center mb-10">
                             <div class="col-md-2">
                                 <label class="form-label">Section Three</label>
@@ -112,21 +139,89 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="row align-items-center mb-10">
-                            <div class="col-md-2">
-                                <label class="form-label">Designation</label>
-                            </div>
-                            <div class="col-md-8 col-xl-5">
-                                <div class="">
-                                    <button id="upload_widget" class="btn btn-danger">Upload files <i class="ms-2 bi bi-cloud-arrow-up-fill"></i></button>
-                                </div>
-                            </div>
-                        </div> -->
+
+                        
                         <div class="row mb-6">
                             <div class="col-md-2">
                             </div>
                             <div class="col-md-8 text-end">
                                 <button type="submit" name="update_service_btn" class="btn btn-danger text-white">Update Service <i class="bi bi-arrow-right"></i></button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="pb-5 pt-5 mb-5 mt-5">
+                        <hr />
+                    </div>
+
+                    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST" enctype="multipart/form-data">
+                        <div class="row align-items-center mb-10" style="display: none;">
+                            <div class="col-md-2">
+                                <label class="form-label">Service ID</label>
+                            </div>
+                            <div class="col-md-8 col-xl-5">
+                                <div class="">
+                                    <input type="number" value="<?php echo $serviceID; ?>" name="serviceID" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center mb-10">
+                            <div class="col-md-2">
+                                <label class="form-label">Section One Gallery</label>
+                            </div>
+                            <div class="col-md-8 col-xl-8">
+                                <div class="input-group">
+                                    <input type="file" name="filePath[]" multiple class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" required>
+                                    <button class="btn btn-dark" type="submit" name="section_one_upload_btn" id="inputGroupFileAddon04">Upload Image</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST" enctype="multipart/form-data">
+                        <div class="row align-items-center mb-10" style="display: none;">
+                            <div class="col-md-2">
+                                <label class="form-label">Service ID</label>
+                            </div>
+                            <div class="col-md-8 col-xl-5">
+                                <div class="">
+                                    <input type="number" value="<?php echo $serviceID; ?>" name="serviceID" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center mb-10">
+                            <div class="col-md-2">
+                                <label class="form-label">Section Two Gallery</label>
+                            </div>
+                            <div class="col-md-8 col-xl-8">
+                                <div class="input-group">
+                                    <input type="file" name="filePath[]" multiple class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" required>
+                                    <button class="btn btn-dark" type="submit" name="section_two_upload_btn" id="inputGroupFileAddon04">Upload Image</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST" enctype="multipart/form-data">
+                        <div class="row align-items-center mb-10" style="display: none;">
+                            <div class="col-md-2">
+                                <label class="form-label">Service ID</label>
+                            </div>
+                            <div class="col-md-8 col-xl-5">
+                                <div class="">
+                                    <input type="number" value="<?php echo $serviceID; ?>" name="serviceID" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center mb-10">
+                            <div class="col-md-2">
+                                <label class="form-label">Section Three Gallery</label>
+                            </div>
+                            <div class="col-md-8 col-xl-8">
+                                <div class="input-group">
+                                    <input type="file" name="filePath[]" multiple class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" required>
+                                    <button class="btn btn-dark" type="submit" name="section_three_upload_btn" id="inputGroupFileAddon04">Upload Image</button>
+                                </div>
                             </div>
                         </div>
                     </form>
