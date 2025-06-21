@@ -29,3 +29,60 @@ if (isset($_POST['new_admin_btn'])) {
         }
     }
 }
+
+
+
+//Add New Certificate Query
+if (isset($_POST['new_certifiate_btn'])) {
+
+    $title = $conn->real_escape_string($_POST['title']);
+    $fileName = $_FILES['filePath']['name'];
+    $fileTmp = $_FILES['filePath']['tmp_name'];
+    $fileType = $_FILES['filePath']['type'];
+    
+    $uploadDir = 'upload/';
+    $targetPath = $uploadDir . $conn->real_escape_string($fileName);
+
+    // If file exists, rename to avoid overwrite
+    if (file_exists($targetPath)) {
+        $uniqueName = uniqid() . '_' . rand(1000, 9999) . '_' . $fileName;
+        $targetPath = $uploadDir . $conn->real_escape_string($uniqueName);
+    }
+
+    // Only accept image files
+    if (!preg_match("!image!", $fileType)) {
+        $_SESSION['error_message'] = "Only image uploads are allowed.";
+        echo "<meta http-equiv='refresh' content='0; URL=certifications'>";
+        exit();
+    }
+
+    // Check if entry already exists table
+    $sql = mysqli_query($conn, "SELECT * FROM certificate WHERE title = '$title'");
+    $result = mysqli_fetch_array($sql);
+
+    if ($result) {
+        // UPDATE existing certificate record
+        $update = mysqli_query($conn, "UPDATE certificate SET title = '$title', filePath = '$targetPath' WHERE title = '$title'");
+
+        if ($update) {
+            copy($fileTmp, $targetPath);
+            $_SESSION['success_message'] = "Certificate updated successfully.";
+        } else {
+            $_SESSION['error_message'] = "Failed to update certificate: " . mysqli_error($conn);
+        }
+    } else {
+        // INSERT new certificate record
+        $insert = mysqli_query($conn, "INSERT INTO certificate (title, filePath) VALUES ('$title', '$targetPath')");
+
+        if ($insert) {
+            copy($fileTmp, $targetPath);
+            $_SESSION['success_message'] = "Certificate uploaded successfully.";
+        } else {
+            $_SESSION['error_message'] = "Failed to insert certificate: " . mysqli_error($conn);
+        }
+    }
+
+    // Redirect back
+    echo "<meta http-equiv='refresh' content='0; URL=certifications'>";
+    exit();
+}

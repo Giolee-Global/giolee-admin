@@ -23,3 +23,12 @@ function confirmQuoteDelete(self) {
     document.getElementById("form-delete-quote").id.value = id;
     $("#quoteDeleteModal").modal("show");
 }
+
+
+//Certificate Delete Trigger
+function confirmCertificateDelete(self) {
+    var id = self.getAttribute("data-id");
+
+    document.getElementById("form-delete-certificate").id.value = id;
+    $("#certificateDeleteModal").modal("show");
+}
