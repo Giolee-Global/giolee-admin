@@ -24,6 +24,9 @@
                                 $firstParagraph = $row['firstParagraph'];
                                 $secondParagraph = $row['secondParagraph'];
                                 $thirdParagraph = $row['thirdParagraph'];
+                                $fourthParagraph = $row['fourthParagraph'];
+                                $fifthParagraph = $row['fifthParagraph'];
+                                $sixthParagraph = $row['sixthParagraph'];
                             }
                         }
 
