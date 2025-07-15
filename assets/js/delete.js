@@ -32,3 +32,12 @@ function confirmCertificateDelete(self) {
     document.getElementById("form-delete-certificate").id.value = id;
     $("#certificateDeleteModal").modal("show");
 }
+
+
+//Team Member Delete Trigger
+function confirmTeamDelete(self) {
+    var id = self.getAttribute("data-id");
+
+    document.getElementById("form-delete-team").id.value = id;
+    $("#teamDeleteModal").modal("show");
+}

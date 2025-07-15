@@ -84,3 +84,41 @@
         </div>
     </div>
     <!-- Create new certificate modal end-->
+
+
+    <!-- Create new team modal start-->
+    <div class="modal fade" id="createNewTeamModal" tabindex="-1" aria-labelledby="createNewTeamModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content overflow-hidden">
+                <div class="modal-header pb-0 border-0">
+                    <h1 class="modal-title h4" id="createNewCertficateModalLabel">Add New Team Member</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    </button>
+                </div>
+                <hr class="mb-0">
+
+                <div class="modal-body undefined">
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" enctype="multipart/form-data">
+                        <div class="row g-5 mb-5">
+                            <div class="col-sm-12">
+                                <label class="form-label">Full Name</label> 
+                                <input type="text" name="fullName" required class="form-control">
+                            </div>
+                            <div class="col-sm-12">
+                                <label class="form-label">Designation</label> 
+                                <input type="text" name="designation" required class="form-control">
+                            </div>
+                            <div class="col-sm-12">
+                                <label class="form-label">Upload Certificate</label> 
+                                <input type="file" name="filePath" required class="form-control">
+                            </div>
+                        </div>
+                        <div class="mb-3 mt-2">
+                            <button type="submit" name="new_team_btn" class="btn btn-dark w-100">Add new team member</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Create new team modal end-->

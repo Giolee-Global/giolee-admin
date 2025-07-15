@@ -75,7 +75,7 @@ if (isset($_POST['delete_quote_btn'])) {
 
 
 
-// Delete Support script
+// Delete Certificate script
 if (isset($_POST['delete_certificate_btn'])) {
 
     $id = $_GET['id'];
@@ -92,6 +92,30 @@ if (isset($_POST['delete_certificate_btn'])) {
     }else{
         $_SESSION['error_message'] = "Error deleting certificate.";
         echo "<meta http-equiv='refresh' content='0; URL=certifications'>";
+        exit();
+    }
+
+}
+
+
+
+// Delete Team script
+if (isset($_POST['delete_team_btn'])) {
+
+    $id = $_GET['id'];
+
+    $id = $conn->real_escape_string($_POST['id']);
+
+    $query = "DELETE FROM team WHERE teamID = '$id'";
+    $result = mysqli_query($conn, $query);
+
+    if (mysqli_affected_rows($conn) > 0 ) {
+        $_SESSION['success_message'] = "Team Member Deleted";
+        echo "<meta http-equiv='refresh' content='0; URL=certifications'>";
+        exit();
+    }else{
+        $_SESSION['error_message'] = "Error deleting team member.";
+        echo "<meta http-equiv='refresh' content='0; URL=team'>";
         exit();
     }
 

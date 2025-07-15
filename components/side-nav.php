@@ -36,20 +36,19 @@
                 </li>
 
                 <li class="nav-item my-1">
-                    <a class="nav-link d-flex align-items-center rounded-pill" href="#sidebar-pages-about" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebar-pages-about">
+                    <a class="nav-link d-flex align-items-center rounded-pill <?php if($page=='About'){echo 'active';}?>" href="#sidebar-pages-about" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebar-pages-about">
                         <i class="bi bi-buildings-fill"></i> 
                         <span>About</span> 
                         <span class="badge badge-sm rounded-pill me-n2 bg-success-subtle text-success ms-auto"></span>
                     </a>
-                    <div
-                        class="collapse" id="sidebar-pages-about">
+                    <div class="collapse" id="sidebar-pages-about">
                         <ul class="nav nav-sm flex-column mt-1">
                             <li class="nav-item"><a href="about" class="nav-link">About us</a></li>
                             <li class="nav-item"><a href="ceo-desk" class="nav-link">The CEO's Desk</a></li>
                             <li class="nav-item"><a href="team" class="nav-link">Team</a></li>
                             <li class="nav-item"><a href="faq" class="nav-link">FAQ's</a></li>
                         </ul>
-                        </div>
+                    </div>
                 </li>
 
                 <li class="nav-item my-1">

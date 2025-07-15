@@ -30,8 +30,6 @@ if (isset($_POST['new_admin_btn'])) {
     }
 }
 
-
-
 //Add New Certificate Query
 if (isset($_POST['new_certifiate_btn'])) {
 
@@ -84,5 +82,61 @@ if (isset($_POST['new_certifiate_btn'])) {
 
     // Redirect back
     echo "<meta http-equiv='refresh' content='0; URL=certifications'>";
+    exit();
+}
+
+//Add New Team Member Query
+if (isset($_POST['new_team_btn'])) {
+
+    $fullName = $conn->real_escape_string($_POST['fullName']);
+    $designation = $conn->real_escape_string($_POST['designation']);
+    $fileName = $_FILES['filePath']['name'];
+    $fileTmp = $_FILES['filePath']['tmp_name'];
+    $fileType = $_FILES['filePath']['type'];
+    
+    $uploadDir = 'upload/';
+    $targetPath = $uploadDir . $conn->real_escape_string($fileName);
+
+    // If file exists, rename to avoid overwrite
+    if (file_exists($targetPath)) {
+        $uniqueName = uniqid() . '_' . rand(1000, 9999) . '_' . $fileName;
+        $targetPath = $uploadDir . $conn->real_escape_string($uniqueName);
+    }
+
+    // Only accept image files
+    if (!preg_match("!image!", $fileType)) {
+        $_SESSION['error_message'] = "Only image uploads are allowed.";
+        echo "<meta http-equiv='refresh' content='0; URL=certifications'>";
+        exit();
+    }
+
+    // Check if entry already exists table
+    $sql = mysqli_query($conn, "SELECT * FROM team WHERE fullName = '$fullName'");
+    $result = mysqli_fetch_array($sql);
+
+    if ($result) {
+        // UPDATE existing team member record
+        $update = mysqli_query($conn, "UPDATE team SET fullName = '$fullName', designation = '$designation', filePath = '$targetPath' WHERE fullName = '$fullName'");
+
+        if ($update) {
+            copy($fileTmp, $targetPath);
+            $_SESSION['success_message'] = "Team member updated successfully.";
+        } else {
+            $_SESSION['error_message'] = "Failed to update team member: " . mysqli_error($conn);
+        }
+    } else {
+        // INSERT new team member record
+        $insert = mysqli_query($conn, "INSERT INTO team (fullName, designation, filePath) VALUES ('$fullName', '$designation', '$targetPath')");
+
+        if ($insert) {
+            copy($fileTmp, $targetPath);
+            $_SESSION['success_message'] = "Team member uploaded successfully.";
+        } else {
+            $_SESSION['error_message'] = "Failed to insert team member: " . mysqli_error($conn);
+        }
+    }
+
+    // Redirect back
+    echo "<meta http-equiv='refresh' content='0; URL=team'>";
     exit();
 }
