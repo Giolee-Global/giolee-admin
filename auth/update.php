@@ -159,3 +159,34 @@ include "./config/db.php";
         }
 
     }
+
+
+
+    //Update Team Member Profile Query
+    if (isset($_POST['update_profile_btn'])) {
+
+        $teamID = isset($_GET['teamID']) ? $_GET['teamID'] : '';
+
+        $teamID = $conn->real_escape_string($_POST['teamID']);
+        $fullName = $conn->real_escape_string($_POST['fullName']);
+        $designation = $conn->real_escape_string($_POST['designation']);
+
+
+        $sql=mysqli_query($conn,"SELECT * FROM team where teamID='$teamID'");
+        $result=mysqli_fetch_array($sql);
+        if($result>0){
+            $conn=mysqli_query($conn,"UPDATE team SET fullName='$fullName', designation='$designation' WHERE teamID='$teamID'");
+
+            $_SESSION['success_message'] = "Team Member Profile Updated";
+            echo "<meta http-equiv='refresh' content='0; URL=edit-team?id=$teamID'>";
+            exit();
+
+        }else {
+
+            $_SESSION['error_message'] = "Error updating team member's profile".mysqli_error($conn);
+            echo "<meta http-equiv='refresh' content='0; URL=edit-team?id=$teamID'>";
+            exit();
+
+        }
+
+    }
