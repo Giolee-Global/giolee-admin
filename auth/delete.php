@@ -111,7 +111,7 @@ if (isset($_POST['delete_team_btn'])) {
 
     if (mysqli_affected_rows($conn) > 0 ) {
         $_SESSION['success_message'] = "Team Member Deleted";
-        echo "<meta http-equiv='refresh' content='0; URL=certifications'>";
+        echo "<meta http-equiv='refresh' content='0; URL=team'>";
         exit();
     }else{
         $_SESSION['error_message'] = "Error deleting team member.";
