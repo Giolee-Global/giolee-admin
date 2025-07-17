@@ -34,7 +34,7 @@
                             </div>
                             <div class="col">
                                 <div class="hstack gap-2 justify-content-end">
-                                    <button type="button" onclick="goBack()" class="btn btn-sm btn-neutral d-sm-inline-flex"><span class="pe-2"><i class="bi bi-arrow-left"></i> </span><span>Go Back</span></button>
+                                    <a href="faq" class="btn btn-sm btn-neutral d-sm-inline-flex"><span class="pe-2"><i class="bi bi-arrow-left"></i> </span><span>Go Back</span></a>
                                 </div>
                             </div>
                         </div>
