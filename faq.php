@@ -57,7 +57,7 @@
                                                             <tr>
                                                                 <td>
                                                                     <div class="d-flex align-items-center gap-3 ps-1">
-                                                                        <div class="icon icon-shape w-rem-10 h-rem-10 rounded-circle text-sm bg-dark bg-opacity-10 text-dark"><i class="bi bi-person-fill"></i></div>
+                                                                        <div class="icon icon-shape w-rem-10 h-rem-10 rounded-circle text-sm bg-dark bg-opacity-10 text-dark"><i class="bi bi-patch-question-fill"></i></div>
                                                                         <div><span class="d-block text-heading fw-bold"><?php echo $question; ?></span></div>
                                                                     </div>
                                                                 </td>
