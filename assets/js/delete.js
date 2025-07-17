@@ -41,3 +41,13 @@ function confirmTeamDelete(self) {
     document.getElementById("form-delete-team").id.value = id;
     $("#teamDeleteModal").modal("show");
 }
+
+
+
+//FAQ Member Delete Trigger
+function confirmFaqDelete(self) {
+    var id = self.getAttribute("data-id");
+
+    document.getElementById("form-delete-faq").id.value = id;
+    $("#faqDeleteModal").modal("show");
+}

@@ -122,3 +122,37 @@
         </div>
     </div>
     <!-- Create new team modal end-->
+
+
+    <!-- Create new faq modal start-->
+    <div class="modal fade" id="createNewFaqModal" tabindex="-1" aria-labelledby="createNewFaqModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content overflow-hidden">
+                <div class="modal-header pb-0 border-0">
+                    <h1 class="modal-title h4" id="createNewFaqModalLabel">Add New FAQ</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    </button>
+                </div>
+                <hr class="mb-0">
+
+                <div class="modal-body undefined">
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" enctype="multipart/form-data">
+                        <div class="row g-5 mb-5">
+                            <div class="col-sm-12">
+                                <label class="form-label">Question</label> 
+                                <textarea rows="2" name="question" required class="form-control"></textarea>
+                            </div>
+                            <div class="col-sm-12">
+                                <label class="form-label">Designation</label> 
+                                <textarea rows="5" name="answer" required class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="mb-3 mt-2">
+                            <button type="submit" name="new_faq_btn" class="btn btn-dark w-100">Add New FAQ</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Create new faq modal end-->

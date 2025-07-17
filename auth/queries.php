@@ -140,3 +140,27 @@ if (isset($_POST['new_team_btn'])) {
     echo "<meta http-equiv='refresh' content='0; URL=team'>";
     exit();
 }
+
+
+//Create New FAQ Query
+if (isset($_POST['new_faq_btn'])) {
+
+    $question = $conn->real_escape_string($_POST['question']);
+    $answer = $conn->real_escape_string($_POST['answer']);
+
+
+    $check_query = "SELECT * FROM faq WHERE question='$question'";
+    $result = mysqli_query($conn, $check_query);
+    if (mysqli_num_rows($result) > 0) {
+        $_SESSION['error_message'] = "FAQ Already Exist!";
+    }else {
+        $query = "INSERT INTO faq (question, answer) 
+  			        VALUES('$question', '$answer')";
+        mysqli_query($conn, $query);
+        if (mysqli_affected_rows($conn) > 0) {
+            $_SESSION['success_message'] = "New FAQ Created";
+        }else {
+            $_SESSION['error_message'] = "Error creating new FAQ".mysqli_error($conn);
+        }
+    }
+}

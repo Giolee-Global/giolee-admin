@@ -190,3 +190,34 @@ include "./config/db.php";
         }
 
     }
+
+
+
+    //Update FAQ Query
+    if (isset($_POST['update_faq_btn'])) {
+
+        $faqID = isset($_GET['faqID']) ? $_GET['faqID'] : '';
+
+        $faqID = $conn->real_escape_string($_POST['faqID']);
+        $question = $conn->real_escape_string($_POST['question']);
+        $answer = $conn->real_escape_string($_POST['answer']);
+
+
+        $sql=mysqli_query($conn,"SELECT * FROM faq where faqID='$faqID'");
+        $result=mysqli_fetch_array($sql);
+        if($result>0){
+            $conn=mysqli_query($conn,"UPDATE faq SET question='$question', answer='$answer' WHERE faqID='$faqID'");
+
+            $_SESSION['success_message'] = "FAQ Updated";
+            echo "<meta http-equiv='refresh' content='0; URL=edit-faq?id=$faqID'>";
+            exit();
+
+        }else {
+
+            $_SESSION['error_message'] = "Error updating FAQ".mysqli_error($conn);
+            echo "<meta http-equiv='refresh' content='0; URL=edit-faq?id=$faqID'>";
+            exit();
+
+        }
+
+    }

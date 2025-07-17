@@ -120,3 +120,27 @@ if (isset($_POST['delete_team_btn'])) {
     }
 
 }
+
+
+
+// Delete FAQ script
+if (isset($_POST['delete_faq_btn'])) {
+
+    $id = $_GET['id'];
+
+    $id = $conn->real_escape_string($_POST['id']);
+
+    $query = "DELETE FROM faq WHERE faqID = '$id'";
+    $result = mysqli_query($conn, $query);
+
+    if (mysqli_affected_rows($conn) > 0 ) {
+        $_SESSION['success_message'] = "FAQ Deleted";
+        echo "<meta http-equiv='refresh' content='0; URL=faq'>";
+        exit();
+    }else{
+        $_SESSION['error_message'] = "Error deleting FAQ.";
+        echo "<meta http-equiv='refresh' content='0; URL=faq'>";
+        exit();
+    }
+
+}
