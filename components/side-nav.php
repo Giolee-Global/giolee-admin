@@ -44,9 +44,10 @@
                     <div class="collapse" id="sidebar-pages-about">
                         <ul class="nav nav-sm flex-column mt-1">
                             <li class="nav-item"><a href="about" class="nav-link">About us</a></li>
-                            <li class="nav-item"><a href="ceo-desk" class="nav-link">The CEO's Desk</a></li>
+                            <li class="nav-item"><a href="ceo" class="nav-link">The CEO's Desk</a></li>
                             <li class="nav-item"><a href="team" class="nav-link">Team</a></li>
                             <li class="nav-item"><a href="faq" class="nav-link">FAQ's</a></li>
+                            <li class="nav-item"><a href="faq" class="nav-link">Career</a></li>
                         </ul>
                     </div>
                 </li>
@@ -64,12 +65,12 @@
                 </li>
 
 
-                <li class="nav-item my-1">
+                <!-- <li class="nav-item my-1">
                     <a class="nav-link d-flex align-items-center rounded-pill <?php if($page=='Media'){echo 'active';}?>" href="media">
                         <i class="bi bi-collection-play-fill"></i> 
                         <span>Media</span>
                     </a>
-                </li>
+                </li> -->
 
                 <li class="nav-item my-1">
                     <a class="nav-link d-flex align-items-center rounded-pill <?php if($page=='Quote'){echo 'active';}?>" href="quote">

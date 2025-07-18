@@ -114,6 +114,118 @@ if (isset($_POST['about_breadcrumb_upload_btn'])) {
 }
 
 
+//CEO Breadcrumb Query
+if (isset($_POST['ceo_breadcrumb_upload_btn'])) {
+
+    $ceoID = $conn->real_escape_string($_POST['ceoID']);
+    $fileName = $_FILES['breadcrumb']['name'];
+    $fileTmp = $_FILES['breadcrumb']['tmp_name'];
+    $fileType = $_FILES['breadcrumb']['type'];
+    
+    $uploadDir = 'media/';
+    $targetPath = $uploadDir . $conn->real_escape_string($fileName);
+
+    // If file exists, rename to avoid overwrite
+    if (file_exists($targetPath)) {
+        $uniqueName = uniqid() . '_' . rand(1000, 9999) . '_' . $fileName;
+        $targetPath = $uploadDir . $conn->real_escape_string($uniqueName);
+    }
+
+    // Only accept image files
+    if (!preg_match("!image!", $fileType)) {
+        $_SESSION['error_message'] = "Only image uploads are allowed.";
+        echo "<meta http-equiv='refresh' content='0; URL=about'>";
+        exit();
+    }
+
+    // Check if entry already exists for this ceo in `breadcrumb` table
+    $sql = mysqli_query($conn, "SELECT * FROM ceo WHERE ceoID = '$ceoID'");
+    $result = mysqli_fetch_array($sql);
+
+    if ($result) {
+        // UPDATE existing breadcrumb record
+        $update = mysqli_query($conn, "UPDATE ceo SET breadcrumb = '$targetPath' WHERE ceoID = '$ceoID'");
+
+        if ($update) {
+            copy($fileTmp, $targetPath);
+            $_SESSION['success_message'] = "Breadcrumb image updated successfully.";
+        } else {
+            $_SESSION['error_message'] = "Failed to update breadcrumb image: " . mysqli_error($conn);
+        }
+    } else {
+        // INSERT new breadcrumb record
+        $insert = mysqli_query($conn, "INSERT INTO ceo (breadcrumb) VALUES ('$targetPath')");
+
+        if ($insert) {
+            copy($fileTmp, $targetPath);
+            $_SESSION['success_message'] = "Breadcrumb image uploaded successfully.";
+        } else {
+            $_SESSION['error_message'] = "Failed to insert breadcrumb image: " . mysqli_error($conn);
+        }
+    }
+
+    // Redirect back
+    echo "<meta http-equiv='refresh' content='0; URL=ceo'>";
+    exit();
+}
+
+
+//CEO Image Query
+if (isset($_POST['ceo_sectionOne_upload_btn'])) {
+
+    $ceoID = $conn->real_escape_string($_POST['ceoID']);
+    $fileName = $_FILES['ceoImage']['name'];
+    $fileTmp = $_FILES['ceoImage']['tmp_name'];
+    $fileType = $_FILES['ceoImage']['type'];
+    
+    $uploadDir = 'media/';
+    $targetPath = $uploadDir . $conn->real_escape_string($fileName);
+
+    // If file exists, rename to avoid overwrite
+    if (file_exists($targetPath)) {
+        $uniqueName = uniqid() . '_' . rand(1000, 9999) . '_' . $fileName;
+        $targetPath = $uploadDir . $conn->real_escape_string($uniqueName);
+    }
+
+    // Only accept image files
+    if (!preg_match("!image!", $fileType)) {
+        $_SESSION['error_message'] = "Only image uploads are allowed.";
+        echo "<meta http-equiv='refresh' content='0; URL=about'>";
+        exit();
+    }
+
+    // Check if entry already exists for this ceo in `ceo's image` table
+    $sql = mysqli_query($conn, "SELECT * FROM ceo WHERE ceoID = '$ceoID'");
+    $result = mysqli_fetch_array($sql);
+
+    if ($result) {
+        // UPDATE existing ceo's image record
+        $update = mysqli_query($conn, "UPDATE ceo SET ceoImage = '$targetPath' WHERE ceoID = '$ceoID'");
+
+        if ($update) {
+            copy($fileTmp, $targetPath);
+            $_SESSION['success_message'] = "CEO's image updated successfully.";
+        } else {
+            $_SESSION['error_message'] = "Failed to update ceo's image: " . mysqli_error($conn);
+        }
+    } else {
+        // INSERT new ceo's image record
+        $insert = mysqli_query($conn, "INSERT INTO ceo (ceoImage) VALUES ('$targetPath')");
+
+        if ($insert) {
+            copy($fileTmp, $targetPath);
+            $_SESSION['success_message'] = "CEO's image uploaded successfully.";
+        } else {
+            $_SESSION['error_message'] = "Failed to insert ceo's image: " . mysqli_error($conn);
+        }
+    }
+
+    // Redirect back
+    echo "<meta http-equiv='refresh' content='0; URL=ceo'>";
+    exit();
+}
+
+
 //About Section One Image Query
 if (isset($_POST['about_sectionOne_upload_btn'])) {
 

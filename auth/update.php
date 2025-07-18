@@ -374,3 +374,64 @@ include "./config/db.php";
         }
 
     }
+
+
+    //Update CEO Quote Section Query
+    if (isset($_POST['update_ceo_quote_btn'])) {
+
+        $ceoID = isset($_GET['ceoID']) ? $_GET['ceoID'] : '';
+
+        $ceoID = $conn->real_escape_string($_POST['ceoID']);
+        $quoteTitle = $conn->real_escape_string($_POST['quoteTitle']);
+        $quote = $conn->real_escape_string($_POST['quote']);
+
+
+        $sql=mysqli_query($conn,"SELECT * FROM ceo where ceoID='$ceoID'");
+        $result=mysqli_fetch_array($sql);
+        if($result>0){
+            $conn=mysqli_query($conn,"UPDATE ceo SET quoteTitle='$quoteTitle', quote='$quote' WHERE ceoID='$ceoID'");
+
+            $_SESSION['success_message'] = "Quote Updated";
+            echo "<meta http-equiv='refresh' content='0; URL=ceo'>";
+            exit();
+
+        }else {
+
+            $_SESSION['error_message'] = "Error updating quote".mysqli_error($conn);
+            echo "<meta http-equiv='refresh' content='0; URL=cep'>";
+            exit();
+
+        }
+
+    }
+
+
+    //Update CEO Section One Query
+    if (isset($_POST['update_ceo_sectionOne_btn'])) {
+
+        $ceoID = isset($_GET['ceoID']) ? $_GET['ceoID'] : '';
+
+        $ceoID = $conn->real_escape_string($_POST['ceoID']);
+        $title = $conn->real_escape_string($_POST['title']);
+        $subTitle = $conn->real_escape_string($_POST['subTitle']);
+        $text = $conn->real_escape_string($_POST['text']);
+
+
+        $sql=mysqli_query($conn,"SELECT * FROM ceo where ceoID='$ceoID'");
+        $result=mysqli_fetch_array($sql);
+        if($result>0){
+            $conn=mysqli_query($conn,"UPDATE ceo SET title='$title', subTitle='$subTitle', text='$text' WHERE ceoID='$ceoID'");
+
+            $_SESSION['success_message'] = "Section One Updated";
+            echo "<meta http-equiv='refresh' content='0; URL=ceo'>";
+            exit();
+
+        }else {
+
+            $_SESSION['error_message'] = "Error updating section one".mysqli_error($conn);
+            echo "<meta http-equiv='refresh' content='0; URL=ceo'>";
+            exit();
+
+        }
+
+    }
