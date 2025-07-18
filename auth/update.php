@@ -398,7 +398,7 @@ include "./config/db.php";
         }else {
 
             $_SESSION['error_message'] = "Error updating quote".mysqli_error($conn);
-            echo "<meta http-equiv='refresh' content='0; URL=cep'>";
+            echo "<meta http-equiv='refresh' content='0; URL=ceo'>";
             exit();
 
         }
@@ -430,6 +430,68 @@ include "./config/db.php";
 
             $_SESSION['error_message'] = "Error updating section one".mysqli_error($conn);
             echo "<meta http-equiv='refresh' content='0; URL=ceo'>";
+            exit();
+
+        }
+
+    }
+
+
+    //Update Careers Quote Section Query
+    if (isset($_POST['update_career_quote_btn'])) {
+
+        $careerID = isset($_GET['careerID']) ? $_GET['careerID'] : '';
+
+        $careerID = $conn->real_escape_string($_POST['careerID']);
+        $quoteTitle = $conn->real_escape_string($_POST['quoteTitle']);
+        $quoteOne = $conn->real_escape_string($_POST['quoteOne']);
+        $quoteTwo = $conn->real_escape_string($_POST['quoteTwo']);
+
+
+        $sql=mysqli_query($conn,"SELECT * FROM career where careerID='$careerID'");
+        $result=mysqli_fetch_array($sql);
+        if($result>0){
+            $conn=mysqli_query($conn,"UPDATE career SET quoteTitle='$quoteTitle', quoteOne='$quoteOne', quoteTwo='$quoteTwo' WHERE careerID='$careerID'");
+
+            $_SESSION['success_message'] = "Quote Updated";
+            echo "<meta http-equiv='refresh' content='0; URL=careers'>";
+            exit();
+
+        }else {
+
+            $_SESSION['error_message'] = "Error updating quote".mysqli_error($conn);
+            echo "<meta http-equiv='refresh' content='0; URL=careers'>";
+            exit();
+
+        }
+
+    }
+
+
+    //Update Careers Section One Query
+    if (isset($_POST['update_career_sectionOne_btn'])) {
+
+        $careerID = isset($_GET['careerID']) ? $_GET['careerID'] : '';
+
+        $careerID = $conn->real_escape_string($_POST['careerID']);
+        $careerInnerImagetitle = $conn->real_escape_string($_POST['careerInnerImagetitle']);
+        $title = $conn->real_escape_string($_POST['title']);
+        $text = $conn->real_escape_string($_POST['text']);
+
+
+        $sql=mysqli_query($conn,"SELECT * FROM career where careerID='$careerID'");
+        $result=mysqli_fetch_array($sql);
+        if($result>0){
+            $conn=mysqli_query($conn,"UPDATE career SET careerInnerImagetitle='$careerInnerImagetitle', title='$title', text='$text' WHERE careerID='$careerID'");
+
+            $_SESSION['success_message'] = "Section One Updated";
+            echo "<meta http-equiv='refresh' content='0; URL=careers'>";
+            exit();
+
+        }else {
+
+            $_SESSION['error_message'] = "Error updating section one".mysqli_error($conn);
+            echo "<meta http-equiv='refresh' content='0; URL=careers'>";
             exit();
 
         }

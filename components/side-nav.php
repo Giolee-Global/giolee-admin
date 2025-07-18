@@ -47,7 +47,7 @@
                             <li class="nav-item"><a href="ceo" class="nav-link">The CEO's Desk</a></li>
                             <li class="nav-item"><a href="team" class="nav-link">Team</a></li>
                             <li class="nav-item"><a href="faq" class="nav-link">FAQ's</a></li>
-                            <li class="nav-item"><a href="faq" class="nav-link">Career</a></li>
+                            <li class="nav-item"><a href="careers" class="nav-link">Careers</a></li>
                         </ul>
                     </div>
                 </li>
@@ -58,6 +58,10 @@
 
                 <li class="nav-item my-1">
                     <a class="nav-link d-flex align-items-center rounded-pill <?php if($page=='Projects'){echo 'active';}?>" href="projects"><i class="bi bi-tools"></i> <span>Projects</span> </a>
+                </li>
+
+                <li class="nav-item my-1">
+                    <a class="nav-link d-flex align-items-center rounded-pill <?php if($page=='Jobs'){echo 'active';}?>" href="jobs"><i class="bi bi-person-workspace"></i> <span>Jobs</span> </a>
                 </li>
 
                 <li class="nav-item my-1">

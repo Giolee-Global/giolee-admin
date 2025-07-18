@@ -170,6 +170,174 @@ if (isset($_POST['ceo_breadcrumb_upload_btn'])) {
 }
 
 
+//Careers Breadcrumb Query
+if (isset($_POST['career_breadcrumb_upload_btn'])) {
+
+    $careerID = $conn->real_escape_string($_POST['careerID']);
+    $fileName = $_FILES['breadcrumb']['name'];
+    $fileTmp = $_FILES['breadcrumb']['tmp_name'];
+    $fileType = $_FILES['breadcrumb']['type'];
+    
+    $uploadDir = 'media/';
+    $targetPath = $uploadDir . $conn->real_escape_string($fileName);
+
+    // If file exists, rename to avoid overwrite
+    if (file_exists($targetPath)) {
+        $uniqueName = uniqid() . '_' . rand(1000, 9999) . '_' . $fileName;
+        $targetPath = $uploadDir . $conn->real_escape_string($uniqueName);
+    }
+
+    // Only accept image files
+    if (!preg_match("!image!", $fileType)) {
+        $_SESSION['error_message'] = "Only image uploads are allowed.";
+        echo "<meta http-equiv='refresh' content='0; URL=about'>";
+        exit();
+    }
+
+    // Check if entry already exists for this career in `breadcrumb` table
+    $sql = mysqli_query($conn, "SELECT * FROM career WHERE careerID = '$careerID'");
+    $result = mysqli_fetch_array($sql);
+
+    if ($result) {
+        // UPDATE existing breadcrumb record
+        $update = mysqli_query($conn, "UPDATE career SET breadcrumb = '$targetPath' WHERE careerID = '$careerID'");
+
+        if ($update) {
+            copy($fileTmp, $targetPath);
+            $_SESSION['success_message'] = "Breadcrumb image updated successfully.";
+        } else {
+            $_SESSION['error_message'] = "Failed to update breadcrumb image: " . mysqli_error($conn);
+        }
+    } else {
+        // INSERT new breadcrumb record
+        $insert = mysqli_query($conn, "INSERT INTO career (breadcrumb) VALUES ('$targetPath')");
+
+        if ($insert) {
+            copy($fileTmp, $targetPath);
+            $_SESSION['success_message'] = "Breadcrumb image uploaded successfully.";
+        } else {
+            $_SESSION['error_message'] = "Failed to insert breadcrumb image: " . mysqli_error($conn);
+        }
+    }
+
+    // Redirect back
+    echo "<meta http-equiv='refresh' content='0; URL=careers'>";
+    exit();
+}
+
+
+//Careers Section One Image Query
+if (isset($_POST['career_sectionOne_upload_btn'])) {
+
+    $careerID = $conn->real_escape_string($_POST['careerID']);
+    $fileName = $_FILES['careerImage']['name'];
+    $fileTmp = $_FILES['careerImage']['tmp_name'];
+    $fileType = $_FILES['careerImage']['type'];
+    
+    $uploadDir = 'media/';
+    $targetPath = $uploadDir . $conn->real_escape_string($fileName);
+
+    // If file exists, rename to avoid overwrite
+    if (file_exists($targetPath)) {
+        $uniqueName = uniqid() . '_' . rand(1000, 9999) . '_' . $fileName;
+        $targetPath = $uploadDir . $conn->real_escape_string($uniqueName);
+    }
+
+    // Only accept image files
+    if (!preg_match("!image!", $fileType)) {
+        $_SESSION['error_message'] = "Only image uploads are allowed.";
+        echo "<meta http-equiv='refresh' content='0; URL=careers'>";
+        exit();
+    }
+
+    // Check if entry already exists for this careers in `Section one` table
+    $sql = mysqli_query($conn, "SELECT * FROM career WHERE careerID = '$careerID'");
+    $result = mysqli_fetch_array($sql);
+
+    if ($result) {
+        // UPDATE existing section one image record
+        $update = mysqli_query($conn, "UPDATE career SET careerImage = '$targetPath' WHERE careerID = '$careerID'");
+
+        if ($update) {
+            copy($fileTmp, $targetPath);
+            $_SESSION['success_message'] = "Image updated successfully.";
+        } else {
+            $_SESSION['error_message'] = "Failed to update image: " . mysqli_error($conn);
+        }
+    } else {
+        // INSERT new image record
+        $insert = mysqli_query($conn, "INSERT INTO career (careerImage) VALUES ('$targetPath')");
+
+        if ($insert) {
+            copy($fileTmp, $targetPath);
+            $_SESSION['success_message'] = "Image uploaded successfully.";
+        } else {
+            $_SESSION['error_message'] = "Failed to insert image: " . mysqli_error($conn);
+        }
+    }
+
+    // Redirect back
+    echo "<meta http-equiv='refresh' content='0; URL=careers'>";
+    exit();
+}
+
+
+//Careers Inner Section One Image Query
+if (isset($_POST['career_innerSectionOne_upload_btn'])) {
+
+    $careerID = $conn->real_escape_string($_POST['careerID']);
+    $fileName = $_FILES['careerInnerImage']['name'];
+    $fileTmp = $_FILES['careerInnerImage']['tmp_name'];
+    $fileType = $_FILES['careerInnerImage']['type'];
+    
+    $uploadDir = 'media/';
+    $targetPath = $uploadDir . $conn->real_escape_string($fileName);
+
+    // If file exists, rename to avoid overwrite
+    if (file_exists($targetPath)) {
+        $uniqueName = uniqid() . '_' . rand(1000, 9999) . '_' . $fileName;
+        $targetPath = $uploadDir . $conn->real_escape_string($uniqueName);
+    }
+
+    // Only accept image files
+    if (!preg_match("!image!", $fileType)) {
+        $_SESSION['error_message'] = "Only image uploads are allowed.";
+        echo "<meta http-equiv='refresh' content='0; URL=careers'>";
+        exit();
+    }
+
+    // Check if entry already exists for this careers in `Section one` table
+    $sql = mysqli_query($conn, "SELECT * FROM career WHERE careerID = '$careerID'");
+    $result = mysqli_fetch_array($sql);
+
+    if ($result) {
+        // UPDATE existing section one image record
+        $update = mysqli_query($conn, "UPDATE career SET careerInnerImage = '$targetPath' WHERE careerID = '$careerID'");
+
+        if ($update) {
+            copy($fileTmp, $targetPath);
+            $_SESSION['success_message'] = "Image updated successfully.";
+        } else {
+            $_SESSION['error_message'] = "Failed to update image: " . mysqli_error($conn);
+        }
+    } else {
+        // INSERT new image record
+        $insert = mysqli_query($conn, "INSERT INTO career (careerInnerImage) VALUES ('$targetPath')");
+
+        if ($insert) {
+            copy($fileTmp, $targetPath);
+            $_SESSION['success_message'] = "Image uploaded successfully.";
+        } else {
+            $_SESSION['error_message'] = "Failed to insert image: " . mysqli_error($conn);
+        }
+    }
+
+    // Redirect back
+    echo "<meta http-equiv='refresh' content='0; URL=careers'>";
+    exit();
+}
+
+
 //CEO Image Query
 if (isset($_POST['ceo_sectionOne_upload_btn'])) {
 
