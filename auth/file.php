@@ -58,6 +58,286 @@ if (isset($_POST['breadcrumb_upload_btn'])) {
 }
 
 
+//About Breadcrumb Query
+if (isset($_POST['about_breadcrumb_upload_btn'])) {
+
+    $aboutID = $conn->real_escape_string($_POST['aboutID']);
+    $fileName = $_FILES['breadcrumb']['name'];
+    $fileTmp = $_FILES['breadcrumb']['tmp_name'];
+    $fileType = $_FILES['breadcrumb']['type'];
+    
+    $uploadDir = 'media/';
+    $targetPath = $uploadDir . $conn->real_escape_string($fileName);
+
+    // If file exists, rename to avoid overwrite
+    if (file_exists($targetPath)) {
+        $uniqueName = uniqid() . '_' . rand(1000, 9999) . '_' . $fileName;
+        $targetPath = $uploadDir . $conn->real_escape_string($uniqueName);
+    }
+
+    // Only accept image files
+    if (!preg_match("!image!", $fileType)) {
+        $_SESSION['error_message'] = "Only image uploads are allowed.";
+        echo "<meta http-equiv='refresh' content='0; URL=about'>";
+        exit();
+    }
+
+    // Check if entry already exists for this about in `breadcrumb` table
+    $sql = mysqli_query($conn, "SELECT * FROM about WHERE aboutID = '$aboutID'");
+    $result = mysqli_fetch_array($sql);
+
+    if ($result) {
+        // UPDATE existing breadcrumb record
+        $update = mysqli_query($conn, "UPDATE about SET breadcrumb = '$targetPath' WHERE aboutID = '$aboutID'");
+
+        if ($update) {
+            copy($fileTmp, $targetPath);
+            $_SESSION['success_message'] = "Breadcrumb image updated successfully.";
+        } else {
+            $_SESSION['error_message'] = "Failed to update breadcrumb image: " . mysqli_error($conn);
+        }
+    } else {
+        // INSERT new breadcrumb record
+        $insert = mysqli_query($conn, "INSERT INTO about (breadcrumb) VALUES ('$targetPath')");
+
+        if ($insert) {
+            copy($fileTmp, $targetPath);
+            $_SESSION['success_message'] = "Breadcrumb image uploaded successfully.";
+        } else {
+            $_SESSION['error_message'] = "Failed to insert breadcrumb image: " . mysqli_error($conn);
+        }
+    }
+
+    // Redirect back
+    echo "<meta http-equiv='refresh' content='0; URL=about'>";
+    exit();
+}
+
+
+//About Section One Image Query
+if (isset($_POST['about_sectionOne_upload_btn'])) {
+
+    $aboutID = $conn->real_escape_string($_POST['aboutID']);
+    $fileName = $_FILES['sectionOneImage']['name'];
+    $fileTmp = $_FILES['sectionOneImage']['tmp_name'];
+    $fileType = $_FILES['sectionOneImage']['type'];
+    
+    $uploadDir = 'media/';
+    $targetPath = $uploadDir . $conn->real_escape_string($fileName);
+
+    // If file exists, rename to avoid overwrite
+    if (file_exists($targetPath)) {
+        $uniqueName = uniqid() . '_' . rand(1000, 9999) . '_' . $fileName;
+        $targetPath = $uploadDir . $conn->real_escape_string($uniqueName);
+    }
+
+    // Only accept image files
+    if (!preg_match("!image!", $fileType)) {
+        $_SESSION['error_message'] = "Only image uploads are allowed.";
+        echo "<meta http-equiv='refresh' content='0; URL=about'>";
+        exit();
+    }
+
+    // Check if entry already exists for this about in `Section one` table
+    $sql = mysqli_query($conn, "SELECT * FROM about WHERE aboutID = '$aboutID'");
+    $result = mysqli_fetch_array($sql);
+
+    if ($result) {
+        // UPDATE existing section one image record
+        $update = mysqli_query($conn, "UPDATE about SET sectionOneImage = '$targetPath' WHERE aboutID = '$aboutID'");
+
+        if ($update) {
+            copy($fileTmp, $targetPath);
+            $_SESSION['success_message'] = "Image updated successfully.";
+        } else {
+            $_SESSION['error_message'] = "Failed to update image: " . mysqli_error($conn);
+        }
+    } else {
+        // INSERT new image record
+        $insert = mysqli_query($conn, "INSERT INTO about (sectionOneImage) VALUES ('$targetPath')");
+
+        if ($insert) {
+            copy($fileTmp, $targetPath);
+            $_SESSION['success_message'] = "Image uploaded successfully.";
+        } else {
+            $_SESSION['error_message'] = "Failed to insert image: " . mysqli_error($conn);
+        }
+    }
+
+    // Redirect back
+    echo "<meta http-equiv='refresh' content='0; URL=about'>";
+    exit();
+}
+
+
+//About Section Two Image Query
+if (isset($_POST['about_sectionTwo_upload_btn'])) {
+
+    $aboutID = $conn->real_escape_string($_POST['aboutID']);
+    $fileName = $_FILES['sectionTwoImage']['name'];
+    $fileTmp = $_FILES['sectionTwoImage']['tmp_name'];
+    $fileType = $_FILES['sectionTwoImage']['type'];
+    
+    $uploadDir = 'media/';
+    $targetPath = $uploadDir . $conn->real_escape_string($fileName);
+
+    // If file exists, rename to avoid overwrite
+    if (file_exists($targetPath)) {
+        $uniqueName = uniqid() . '_' . rand(1000, 9999) . '_' . $fileName;
+        $targetPath = $uploadDir . $conn->real_escape_string($uniqueName);
+    }
+
+    // Only accept image files
+    if (!preg_match("!image!", $fileType)) {
+        $_SESSION['error_message'] = "Only image uploads are allowed.";
+        echo "<meta http-equiv='refresh' content='0; URL=about'>";
+        exit();
+    }
+
+    // Check if entry already exists for this about in `Section two` table
+    $sql = mysqli_query($conn, "SELECT * FROM about WHERE aboutID = '$aboutID'");
+    $result = mysqli_fetch_array($sql);
+
+    if ($result) {
+        // UPDATE existing section two image record
+        $update = mysqli_query($conn, "UPDATE about SET sectionTwoImage = '$targetPath' WHERE aboutID = '$aboutID'");
+
+        if ($update) {
+            copy($fileTmp, $targetPath);
+            $_SESSION['success_message'] = "Image updated successfully.";
+        } else {
+            $_SESSION['error_message'] = "Failed to update image: " . mysqli_error($conn);
+        }
+    } else {
+        // INSERT new image record
+        $insert = mysqli_query($conn, "INSERT INTO about (sectionTwoImage) VALUES ('$targetPath')");
+
+        if ($insert) {
+            copy($fileTmp, $targetPath);
+            $_SESSION['success_message'] = "Image uploaded successfully.";
+        } else {
+            $_SESSION['error_message'] = "Failed to insert image: " . mysqli_error($conn);
+        }
+    }
+
+    // Redirect back
+    echo "<meta http-equiv='refresh' content='0; URL=about'>";
+    exit();
+}
+
+
+//About Section Three Image Query
+if (isset($_POST['about_sectionThree_upload_btn'])) {
+
+    $aboutID = $conn->real_escape_string($_POST['aboutID']);
+    $fileName = $_FILES['sectionThreeImage']['name'];
+    $fileTmp = $_FILES['sectionThreeImage']['tmp_name'];
+    $fileType = $_FILES['sectionThreeImage']['type'];
+    
+    $uploadDir = 'media/';
+    $targetPath = $uploadDir . $conn->real_escape_string($fileName);
+
+    // If file exists, rename to avoid overwrite
+    if (file_exists($targetPath)) {
+        $uniqueName = uniqid() . '_' . rand(1000, 9999) . '_' . $fileName;
+        $targetPath = $uploadDir . $conn->real_escape_string($uniqueName);
+    }
+
+    // Only accept image files
+    if (!preg_match("!image!", $fileType)) {
+        $_SESSION['error_message'] = "Only image uploads are allowed.";
+        echo "<meta http-equiv='refresh' content='0; URL=about'>";
+        exit();
+    }
+
+    // Check if entry already exists for this about in `Section three` table
+    $sql = mysqli_query($conn, "SELECT * FROM about WHERE aboutID = '$aboutID'");
+    $result = mysqli_fetch_array($sql);
+
+    if ($result) {
+        // UPDATE existing section two image record
+        $update = mysqli_query($conn, "UPDATE about SET sectionThreeImage = '$targetPath' WHERE aboutID = '$aboutID'");
+
+        if ($update) {
+            copy($fileTmp, $targetPath);
+            $_SESSION['success_message'] = "Image updated successfully.";
+        } else {
+            $_SESSION['error_message'] = "Failed to update image: " . mysqli_error($conn);
+        }
+    } else {
+        // INSERT new image record
+        $insert = mysqli_query($conn, "INSERT INTO about (sectionTwoImage) VALUES ('$targetPath')");
+
+        if ($insert) {
+            copy($fileTmp, $targetPath);
+            $_SESSION['success_message'] = "Image uploaded successfully.";
+        } else {
+            $_SESSION['error_message'] = "Failed to insert image: " . mysqli_error($conn);
+        }
+    }
+
+    // Redirect back
+    echo "<meta http-equiv='refresh' content='0; URL=about'>";
+    exit();
+}
+
+
+//About Section Four Image Query
+if (isset($_POST['about_sectionFour_upload_btn'])) {
+
+    $aboutID = $conn->real_escape_string($_POST['aboutID']);
+    $fileName = $_FILES['sectionFourImage']['name'];
+    $fileTmp = $_FILES['sectionFourImage']['tmp_name'];
+    $fileType = $_FILES['sectionFourImage']['type'];
+    
+    $uploadDir = 'media/';
+    $targetPath = $uploadDir . $conn->real_escape_string($fileName);
+
+    // If file exists, rename to avoid overwrite
+    if (file_exists($targetPath)) {
+        $uniqueName = uniqid() . '_' . rand(1000, 9999) . '_' . $fileName;
+        $targetPath = $uploadDir . $conn->real_escape_string($uniqueName);
+    }
+
+    // Only accept image files
+    if (!preg_match("!image!", $fileType)) {
+        $_SESSION['error_message'] = "Only image uploads are allowed.";
+        echo "<meta http-equiv='refresh' content='0; URL=about'>";
+        exit();
+    }
+
+    // Check if entry already exists for this about in `Section four` table
+    $sql = mysqli_query($conn, "SELECT * FROM about WHERE aboutID = '$aboutID'");
+    $result = mysqli_fetch_array($sql);
+
+    if ($result) {
+        // UPDATE existing section two image record
+        $update = mysqli_query($conn, "UPDATE about SET sectionFourImage = '$targetPath' WHERE aboutID = '$aboutID'");
+
+        if ($update) {
+            copy($fileTmp, $targetPath);
+            $_SESSION['success_message'] = "Image updated successfully.";
+        } else {
+            $_SESSION['error_message'] = "Failed to update image: " . mysqli_error($conn);
+        }
+    } else {
+        // INSERT new image record
+        $insert = mysqli_query($conn, "INSERT INTO about (sectionTwoImage) VALUES ('$targetPath')");
+
+        if ($insert) {
+            copy($fileTmp, $targetPath);
+            $_SESSION['success_message'] = "Image uploaded successfully.";
+        } else {
+            $_SESSION['error_message'] = "Failed to insert image: " . mysqli_error($conn);
+        }
+    }
+
+    // Redirect back
+    echo "<meta http-equiv='refresh' content='0; URL=about'>";
+    exit();
+}
+
+
 //Hero Query
 if (isset($_POST['hero_upload_btn'])) {
 

@@ -38,7 +38,7 @@
                 <li class="nav-item my-1">
                     <a class="nav-link d-flex align-items-center rounded-pill <?php if($page=='About'){echo 'active';}?>" href="#sidebar-pages-about" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebar-pages-about">
                         <i class="bi bi-buildings-fill"></i> 
-                        <span>About</span> 
+                        <span>Company</span> 
                         <span class="badge badge-sm rounded-pill me-n2 bg-success-subtle text-success ms-auto"></span>
                     </a>
                     <div class="collapse" id="sidebar-pages-about">

@@ -57,6 +57,41 @@
             .catch( error => {
                 console.error( error );
             } );
+        ClassicEditor
+            .create( document.querySelector( '#aboutSection1' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+        ClassicEditor
+            .create( document.querySelector( '#aboutSection2' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+        ClassicEditor
+            .create( document.querySelector( '#sectionThreeText' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+        ClassicEditor
+            .create( document.querySelector( '#sectionThreeSubTextOne' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+        ClassicEditor
+            .create( document.querySelector( '#sectionThreeSubTextTwo' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+        ClassicEditor
+            .create( document.querySelector( '#sectionThreeSubTextThree' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+        ClassicEditor
+            .create( document.querySelector( '#sectionFourText' ) )
+            .catch( error => {
+                console.error( error );
+            } );
     </script>
     
 
