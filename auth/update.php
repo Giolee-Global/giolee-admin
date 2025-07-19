@@ -497,3 +497,36 @@ include "./config/db.php";
         }
 
     }
+
+
+    //Update Job Section One Query
+    if (isset($_POST['update_job_btn'])) {
+
+        $jobID = isset($_GET['jobID']) ? $_GET['jobID'] : '';
+
+        $jobID = $conn->real_escape_string($_POST['jobID']);
+        $title = $conn->real_escape_string($_POST['title']);
+        $jobSummary = $conn->real_escape_string($_POST['jobSummary']);
+        $mainTasks = $conn->real_escape_string($_POST['mainTasks']);
+        $jobSpecification = $conn->real_escape_string($_POST['jobSpecification']);
+        $status = $conn->real_escape_string($_POST['status']);
+
+
+        $sql=mysqli_query($conn,"SELECT * FROM jobs where jobID='$jobID'");
+        $result=mysqli_fetch_array($sql);
+        if($result>0){
+            $conn=mysqli_query($conn,"UPDATE jobs SET title='$title', jobSummary='$jobSummary', mainTasks='$mainTasks', jobSpecification='$jobSpecification', status='$status' WHERE jobID='$jobID'");
+
+            $_SESSION['success_message'] = "Job Updated";
+            echo "<meta http-equiv='refresh' content='0; URL=edit-job?id=$jobID'>";
+            exit();
+
+        }else {
+
+            $_SESSION['error_message'] = "Error updating job".mysqli_error($conn);
+            echo "<meta http-equiv='refresh' content='0; URL=edit-job?id=$jobID'>";
+            exit();
+
+        }
+
+    }

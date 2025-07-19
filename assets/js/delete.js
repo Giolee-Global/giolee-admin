@@ -51,3 +51,12 @@ function confirmFaqDelete(self) {
     document.getElementById("form-delete-faq").id.value = id;
     $("#faqDeleteModal").modal("show");
 }
+
+
+//Job Delete Trigger
+function confirmJobDelete(self) {
+    var id = self.getAttribute("data-id");
+
+    document.getElementById("form-delete-job").id.value = id;
+    $("#jobDeleteModal").modal("show");
+}

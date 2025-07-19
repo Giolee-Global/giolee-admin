@@ -144,3 +144,27 @@ if (isset($_POST['delete_faq_btn'])) {
     }
 
 }
+
+
+
+// Delete Job script
+if (isset($_POST['delete_job_btn'])) {
+
+    $id = $_GET['id'];
+
+    $id = $conn->real_escape_string($_POST['id']);
+
+    $query = "DELETE FROM jobs WHERE jobID = '$id'";
+    $result = mysqli_query($conn, $query);
+
+    if (mysqli_affected_rows($conn) > 0 ) {
+        $_SESSION['success_message'] = "Job Deleted";
+        echo "<meta http-equiv='refresh' content='0; URL=jobs'>";
+        exit();
+    }else{
+        $_SESSION['error_message'] = "Error deleting Job.";
+        echo "<meta http-equiv='refresh' content='0; URL=jobs'>";
+        exit();
+    }
+
+}
