@@ -92,6 +92,21 @@
             .catch( error => {
                 console.error( error );
             } );
+        ClassicEditor
+            .create( document.querySelector( '#jobSummary' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+        ClassicEditor
+            .create( document.querySelector( '#mainTasks' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+        ClassicEditor
+            .create( document.querySelector( '#jobSpecification' ) )
+            .catch( error => {
+                console.error( error );
+            } );
     </script>
     
 

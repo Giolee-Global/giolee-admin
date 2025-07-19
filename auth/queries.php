@@ -164,3 +164,31 @@ if (isset($_POST['new_faq_btn'])) {
         }
     }
 }
+
+
+
+//Create New Job Query
+if (isset($_POST['new_job_btn'])) {
+
+    $title = $conn->real_escape_string($_POST['title']);
+    $jobSummary = $conn->real_escape_string($_POST['jobSummary']);
+    $mainTasks = $conn->real_escape_string($_POST['mainTasks']);
+    $jobSpecification = $conn->real_escape_string($_POST['jobSpecification']);
+
+
+    $check_query = "SELECT * FROM jobs WHERE title='$title'";
+    $result = mysqli_query($conn, $check_query);
+    if (mysqli_num_rows($result) > 0) {
+        $_SESSION['error_message'] = "Job Already Exist!";
+    }else {
+        $query = "INSERT INTO jobs (title, jobSummary, mainTasks, jobSpecification) 
+  			        VALUES('$title', '$jobSummary', '$mainTasks', '$jobSpecification')";
+        mysqli_query($conn, $query);
+        if (mysqli_affected_rows($conn) > 0) {
+            $_SESSION['success_message'] = "New Job Created";
+            exit();
+        }else {
+            $_SESSION['error_message'] = "Error creating new job".mysqli_error($conn);
+        }
+    }
+}
