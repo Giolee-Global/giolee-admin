@@ -1,5 +1,5 @@
 <?php
-    $page = "Admins";
+    $page = "Jobs";
     include "./components/header.php";
     require_once "./auth/delete.php";
     require_once "./auth/update.php";
