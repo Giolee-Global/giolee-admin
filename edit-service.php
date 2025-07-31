@@ -3,6 +3,8 @@
     include "./components/header.php";
     require_once "./auth/update.php";
     require_once "./auth/file.php";
+    require_once "./auth/delete-images.php";
+    
 ?>
     <div class="d-flex flex-column flex-lg-row h-lg-100 gap-1">
         <?php include "./components/side-nav.php"; ?>
@@ -218,6 +220,27 @@
                         </div>
                     </form>
 
+                    <?php
+                        $query = "SELECT * FROM media WHERE serviceID = '$serviceID'";
+                        $gallery_result = mysqli_query($conn, $query);
+
+                        if (!$gallery_result) {
+                            die("Query failed: " . mysqli_error($conn));
+                        }
+                    ?>
+                    <div class="d-flex flex-wrap gap-3 mb-10">
+                        <?php while ($img = mysqli_fetch_assoc($gallery_result)) : ?>
+                            <div style="width: 180px;" class="text-center">
+                                <img src="<?php echo $img['filePath']; ?>" class="img-fluid rounded" style="height: 150px; width: 100%; object-fit: cover;">
+                                <form method="POST" onsubmit="return confirm('Are you sure you want to delete this image?');">
+                                    <input type="hidden" name="gallery_image_id" value="<?php echo $img['mediaID']; ?>">
+                                    <input type="hidden" name="filePath" value="<?php echo $img['filePath']; ?>">
+                                    <button class="btn btn-sm btn-danger mt-2" type="submit" name="delete_gallery_image_btn_one"><i class='bi bi-trash3-fill'></i></button>
+                                </form>
+                            </div>
+                        <?php endwhile; ?>
+                    </div>
+
                     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST" enctype="multipart/form-data">
                         <div class="row align-items-center mb-10" style="display: none;">
                             <div class="col-md-2">
@@ -241,6 +264,28 @@
                             </div>
                         </div>
                     </form>
+
+                    <?php
+                        $query = "SELECT * FROM media_two WHERE serviceID = '$serviceID'";
+                        $gallery_result = mysqli_query($conn, $query);
+
+                        if (!$gallery_result) {
+                            die("Query failed: " . mysqli_error($conn));
+                        }
+                    ?>
+
+                    <div class="d-flex flex-wrap gap-3 mb-10">
+                        <?php while ($img = mysqli_fetch_assoc($gallery_result)) : ?>
+                            <div style="width: 180px;" class="text-center">
+                                <img src="<?php echo $img['filePath']; ?>" class="img-fluid rounded" style="height: 150px; width: 100%; object-fit: cover;">
+                                <form method="POST" onsubmit="return confirm('Are you sure you want to delete this image?');">
+                                    <input type="hidden" name="gallery_image_id" value="<?php echo $img['mediaID']; ?>">
+                                    <input type="hidden" name="filePath" value="<?php echo $img['filePath']; ?>">
+                                    <button class="btn btn-sm btn-danger mt-2" type="submit" name="delete_gallery_image_btn_two"><i class='bi bi-trash3-fill'></i></button>
+                                </form>
+                            </div>
+                        <?php endwhile; ?>
+                    </div>
 
                     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST" enctype="multipart/form-data">
                         <div class="row align-items-center mb-10" style="display: none;">
@@ -266,6 +311,28 @@
                         </div>
                     </form>
 
+                    <?php
+                        $query = "SELECT * FROM media_three WHERE serviceID = '$serviceID'";
+                        $gallery_result = mysqli_query($conn, $query);
+
+                        if (!$gallery_result) {
+                            die("Query failed: " . mysqli_error($conn));
+                        }
+                    ?>
+
+                    <div class="d-flex flex-wrap gap-3 mb-10">
+                        <?php while ($img = mysqli_fetch_assoc($gallery_result)) : ?>
+                            <div style="width: 180px;" class="text-center">
+                                <img src="<?php echo $img['filePath']; ?>" class="img-fluid rounded" style="height: 150px; width: 100%; object-fit: cover;">
+                                <form method="POST" onsubmit="return confirm('Are you sure you want to delete this image?');">
+                                    <input type="hidden" name="gallery_image_id" value="<?php echo $img['mediaID']; ?>">
+                                    <input type="hidden" name="filePath" value="<?php echo $img['filePath']; ?>">
+                                    <button class="btn btn-sm btn-danger mt-2" type="submit" name="delete_gallery_image_btn_three"><i class='bi bi-trash3-fill'></i></button>
+                                </form>
+                            </div>
+                        <?php endwhile; ?>
+                    </div>
+
                     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST" enctype="multipart/form-data">
                         <div class="row align-items-center mb-10" style="display: none;">
                             <div class="col-md-2">
@@ -289,6 +356,28 @@
                             </div>
                         </div>
                     </form>
+
+                    <?php
+                        $query = "SELECT * FROM media_four WHERE serviceID = '$serviceID'";
+                        $gallery_result = mysqli_query($conn, $query);
+
+                        if (!$gallery_result) {
+                            die("Query failed: " . mysqli_error($conn));
+                        }
+                    ?>
+
+                    <div class="d-flex flex-wrap gap-3 mb-10">
+                        <?php while ($img = mysqli_fetch_assoc($gallery_result)) : ?>
+                            <div style="width: 180px;" class="text-center">
+                                <img src="<?php echo $img['filePath']; ?>" class="img-fluid rounded" style="height: 150px; width: 100%; object-fit: cover;">
+                                <form method="POST" onsubmit="return confirm('Are you sure you want to delete this image?');">
+                                    <input type="hidden" name="gallery_image_id" value="<?php echo $img['mediaID']; ?>">
+                                    <input type="hidden" name="filePath" value="<?php echo $img['filePath']; ?>">
+                                    <button class="btn btn-sm btn-danger mt-2" type="submit" name="delete_gallery_image_btn_four"><i class='bi bi-trash3-fill'></i></button>
+                                </form>
+                            </div>
+                        <?php endwhile; ?>
+                    </div>
 
                     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST" enctype="multipart/form-data">
                         <div class="row align-items-center mb-10" style="display: none;">
@@ -314,6 +403,28 @@
                         </div>
                     </form>
 
+                    <?php
+                        $query = "SELECT * FROM media_five WHERE serviceID = '$serviceID'";
+                        $gallery_result = mysqli_query($conn, $query);
+
+                        if (!$gallery_result) {
+                            die("Query failed: " . mysqli_error($conn));
+                        }
+                    ?>
+
+                    <div class="d-flex flex-wrap gap-3 mb-10">
+                        <?php while ($img = mysqli_fetch_assoc($gallery_result)) : ?>
+                            <div style="width: 180px;" class="text-center">
+                                <img src="<?php echo $img['filePath']; ?>" class="img-fluid rounded" style="height: 150px; width: 100%; object-fit: cover;">
+                                <form method="POST" onsubmit="return confirm('Are you sure you want to delete this image?');">
+                                    <input type="hidden" name="gallery_image_id" value="<?php echo $img['mediaID']; ?>">
+                                    <input type="hidden" name="filePath" value="<?php echo $img['filePath']; ?>">
+                                    <button class="btn btn-sm btn-danger mt-2" type="submit" name="delete_gallery_image_btn_five"><i class='bi bi-trash3-fill'></i></button>
+                                </form>
+                            </div>
+                        <?php endwhile; ?>
+                    </div>
+
                     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST" enctype="multipart/form-data">
                         <div class="row align-items-center mb-10" style="display: none;">
                             <div class="col-md-2">
@@ -337,6 +448,28 @@
                             </div>
                         </div>
                     </form>
+
+                    <?php
+                        $query = "SELECT * FROM media_six WHERE serviceID = '$serviceID'";
+                        $gallery_result = mysqli_query($conn, $query);
+
+                        if (!$gallery_result) {
+                            die("Query failed: " . mysqli_error($conn));
+                        }
+                    ?>
+                    <div class="d-flex flex-wrap gap-3 mb-10">
+                        <?php while ($img = mysqli_fetch_assoc($gallery_result)) : ?>
+                            <div style="width: 180px;" class="text-center">
+                                <img src="<?php echo $img['filePath']; ?>" class="img-fluid rounded" style="height: 150px; width: 100%; object-fit: cover;">
+                                <form method="POST" onsubmit="return confirm('Are you sure you want to delete this image?');">
+                                    <input type="hidden" name="gallery_image_id" value="<?php echo $img['mediaID']; ?>">
+                                    <input type="hidden" name="filePath" value="<?php echo $img['filePath']; ?>">
+                                    <button class="btn btn-sm btn-danger mt-2" type="submit" name="delete_gallery_image_btn_six"><i class='bi bi-trash3-fill'></i></button>
+                                </form>
+                            </div>
+                        <?php endwhile; ?>
+                    </div>
+
                 </main>
             </div>
         </div>
