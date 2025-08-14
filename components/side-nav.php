@@ -57,7 +57,17 @@
                 </li>
 
                 <li class="nav-item my-1">
-                    <a class="nav-link d-flex align-items-center rounded-pill <?php if($page=='Projects'){echo 'active';}?>" href="projects"><i class="bi bi-tools"></i> <span>Projects</span> </a>
+                    <a class="nav-link d-flex align-items-center rounded-pill <?php if($page=='Projects'){echo 'active';}?>" href="#sidebar-pages-projects" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebar-pages-projects">
+                        <i class="bi bi-tools"></i> 
+                        <span>Projects</span> 
+                        <span class="badge badge-sm rounded-pill me-n2 bg-success-subtle text-success ms-auto"></span>
+                    </a>
+                    <div class="collapse" id="sidebar-pages-projects">
+                        <ul class="nav nav-sm flex-column mt-1">
+                            <li class="nav-item"><a href="project-categories" class="nav-link">Categories</a></li>
+                            <li class="nav-item"><a href="projects" class="nav-link">Projects</a></li>
+                        </ul>
+                    </div>
                 </li>
 
                 <li class="nav-item my-1">

@@ -66,7 +66,6 @@ include "./config/db.php";
     }
 
 
-
     //Update Support Query
     if (isset($_POST['update_support_btn'])) {
 
@@ -125,7 +124,6 @@ include "./config/db.php";
     }
 
 
-
     //Update Service Query
     if (isset($_POST['update_service_btn'])) {
 
@@ -161,7 +159,6 @@ include "./config/db.php";
     }
 
 
-
     //Update Team Member Profile Query
     if (isset($_POST['update_profile_btn'])) {
 
@@ -190,7 +187,6 @@ include "./config/db.php";
         }
 
     }
-
 
 
     //Update FAQ Query
@@ -525,6 +521,70 @@ include "./config/db.php";
 
             $_SESSION['error_message'] = "Error updating job".mysqli_error($conn);
             echo "<meta http-equiv='refresh' content='0; URL=edit-job?id=$jobID'>";
+            exit();
+
+        }
+
+    }
+
+
+    //Update Project Category Query
+    if (isset($_POST['update_project_category_btn'])) {
+
+        $categoryID = isset($_GET['categoryID']) ? $_GET['categoryID'] : '';
+
+        $categoryID = $conn->real_escape_string($_POST['categoryID']);
+        $title = $conn->real_escape_string($_POST['title']);
+
+
+        $sql=mysqli_query($conn,"SELECT * FROM project_categories where categoryID='$categoryID'");
+        $result=mysqli_fetch_array($sql);
+        if($result>0){
+            $conn=mysqli_query($conn,"UPDATE project_categories SET title='$title' WHERE categoryID='$categoryID'");
+
+            $_SESSION['success_message'] = "Project category updated 👍";
+            echo "<meta http-equiv='refresh' content='0; URL=edit-project-category?id=$categoryID'>";
+            exit();
+
+        }else {
+
+            $_SESSION['error_message'] = "Error updating project category".mysqli_error($conn);
+            echo "<meta http-equiv='refresh' content='0; URL=edit-project-category?id=$categoryID'>";
+            exit();
+
+        }
+
+    }
+
+
+
+    //Update Project Query
+    if (isset($_POST['update_project_btn'])) {
+
+        $projectID = isset($_GET['projectID']) ? $_GET['projectID'] : '';
+
+        $projectID = $conn->real_escape_string($_POST['projectID']);
+        $title = $conn->real_escape_string($_POST['title']);
+        $client = $conn->real_escape_string($_POST['client']);
+        $projectDate = $conn->real_escape_string($_POST['projectDate']);
+        $projectCategoryID = $conn->real_escape_string($_POST['projectCategoryID']);
+        $location = $conn->real_escape_string($_POST['location']);
+        $description = $conn->real_escape_string($_POST['description']);
+
+
+        $sql=mysqli_query($conn,"SELECT * FROM projects where projectID='$projectID'");
+        $result=mysqli_fetch_array($sql);
+        if($result>0){
+            $conn=mysqli_query($conn,"UPDATE projects SET title='$title', client='$client', projectDate='$projectDate', projectCategoryID='$projectCategoryID', location='$location', description='$description' WHERE projectID='$projectID'");
+
+            $_SESSION['success_message'] = "Project Updated";
+            echo "<meta http-equiv='refresh' content='0; URL=edit-project?id=$projectID'>";
+            exit();
+
+        }else {
+
+            $_SESSION['error_message'] = "Error updating project".mysqli_error($conn);
+            echo "<meta http-equiv='refresh' content='0; URL=edit-project?id=$projectID'>";
             exit();
 
         }

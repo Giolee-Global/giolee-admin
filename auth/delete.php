@@ -168,3 +168,51 @@ if (isset($_POST['delete_job_btn'])) {
     }
 
 }
+
+
+
+// Delete Project Category script
+if (isset($_POST['delete_project_category_btn'])) {
+
+    $id = $_GET['id'];
+
+    $id = $conn->real_escape_string($_POST['id']);
+
+    $query = "DELETE FROM project_categories WHERE categoryID = '$id'";
+    $result = mysqli_query($conn, $query);
+
+    if (mysqli_affected_rows($conn) > 0 ) {
+        $_SESSION['success_message'] = "Project Category Deleted";
+        echo "<meta http-equiv='refresh' content='0; URL=project-categories'>";
+        exit();
+    }else{
+        $_SESSION['error_message'] = "Error deleting project category.";
+        echo "<meta http-equiv='refresh' content='0; URL=project-categories'>";
+        exit();
+    }
+
+}
+
+
+
+// Delete Project Category script
+if (isset($_POST['delete_project_btn'])) {
+
+    $id = $_GET['id'];
+
+    $id = $conn->real_escape_string($_POST['id']);
+
+    $query = "DELETE FROM projects WHERE projectID = '$id'";
+    $result = mysqli_query($conn, $query);
+
+    if (mysqli_affected_rows($conn) > 0 ) {
+        $_SESSION['success_message'] = "Project Deleted";
+        echo "<meta http-equiv='refresh' content='0; URL=projects'>";
+        exit();
+    }else{
+        $_SESSION['error_message'] = "Error deleting project.";
+        echo "<meta http-equiv='refresh' content='0; URL=projects'>";
+        exit();
+    }
+
+}

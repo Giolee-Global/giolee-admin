@@ -167,3 +167,31 @@ if (isset($_POST['delete_gallery_image_btn_one'])) {
     header("Location: " . $_SERVER['REQUEST_URI']);
     exit();
 }
+
+
+
+if (isset($_POST['delete_project_gallery_image_btn'])) {
+    $projectMediaID = $_POST['gallery_image_id'];
+    $filePath = $_POST['filePath'];
+
+    $uploadDir = __DIR__ . '/'; // adjust if needed
+    $fullPath = $uploadDir . $filePath;
+
+    // Debug (optional)
+    // echo $fullPath;
+
+    if (file_exists($fullPath)) {
+        unlink($fullPath); // delete image from upload folder
+    }
+
+    // delete from database
+    $delete_query = "DELETE FROM project_media WHERE projectMediaID = ?";
+    $stmt = mysqli_prepare($conn, $delete_query);
+    mysqli_stmt_bind_param($stmt, 'i', $projectMediaID);
+    mysqli_stmt_execute($stmt);
+
+    // redirect to refresh
+    $_SESSION['success_message'] = "Image Deleted";
+    header("Location: " . $_SERVER['REQUEST_URI']);
+    exit();
+}

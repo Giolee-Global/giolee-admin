@@ -91,7 +91,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content overflow-hidden">
                 <div class="modal-header pb-0 border-0">
-                    <h1 class="modal-title h4" id="createNewCertficateModalLabel">Add New Team Member</h1>
+                    <h1 class="modal-title h4" id="createNewTeamModalLabel">Add New Team Member</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                     </button>
                 </div>
@@ -109,7 +109,7 @@
                                 <input type="text" name="designation" required class="form-control">
                             </div>
                             <div class="col-sm-12">
-                                <label class="form-label">Upload Certificate</label> 
+                                <label class="form-label">Upload Photograph</label> 
                                 <input type="file" name="filePath" required class="form-control">
                             </div>
                         </div>
@@ -156,3 +156,95 @@
         </div>
     </div>
     <!-- Create new faq modal end-->
+
+
+    <!-- Create new project category modal start-->
+    <div class="modal fade" id="createNewProjectCategoryModal" tabindex="-1" aria-labelledby="createNewProjectCategoryModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content overflow-hidden">
+                <div class="modal-header pb-0 border-0">
+                    <h1 class="modal-title h4" id="createNewProjectCategoryModal">Add New Category</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    </button>
+                </div>
+                <hr class="mb-0">
+
+                <div class="modal-body undefined">
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+                        <div class="row g-5 mb-5">
+                            <div class="col-sm-12">
+                                <label class="form-label">Certificate Title</label> 
+                                <input type="text" name="title" required class="form-control">
+                            </div>
+                        </div>
+                        <div class="mb-3 mt-2">
+                            <button type="submit" name="new_project_category_btn" class="btn btn-dark w-100">Add new Category</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Create new project category modal end-->
+
+
+
+    <!-- Create new project modal start-->
+    <div class="modal fade" id="createNewProjectModal" tabindex="-1" aria-labelledby="createNewProjectModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content overflow-hidden">
+                <div class="modal-header pb-0 border-0">
+                    <h1 class="modal-title h4" id="createNewProjectModalLabel">Add New Project</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    </button>
+                </div>
+                <hr class="mb-0">
+
+                <div class="modal-body undefined">
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" enctype="multipart/form-data">
+                        <div class="row g-5 mb-5">
+                            <div class="col-sm-12">
+                                <label class="form-label">Title</label> 
+                                <input type="text" name="title" required class="form-control">
+                            </div>
+                            <div class="col-sm-12">
+                                <label class="form-label">Project</label>
+                                <select class="form-select" name="projectCategoryID" required aria-label="Project">
+                                    <?php
+                                    $select_query = "SELECT * FROM project_categories";
+                                    $result = mysqli_query($conn, $select_query);
+                                    if (mysqli_num_rows($result) > 0) {
+                                        // output data of each row
+                                        while($row = mysqli_fetch_assoc($result)) {
+                                            $categoryID = $row['categoryID'];
+                                            $title = $row['title'];
+                                    ?>
+                                    <option value="<?php echo $categoryID;?>"><?php echo $title; ?></option>
+                                    <?php
+                                        }
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="col-sm-12">
+                                <label class="form-label">Client</label> 
+                                <input type="text" name="client" required class="form-control">
+                            </div>
+                            <div class="col-sm-12">
+                                <label class="form-label">Project Date</label> 
+                                <input type="date" name="projectDate" required class="form-control">
+                            </div>
+                            <div class="col-sm-12">
+                                <label class="form-label">Upload Hero Banner</label> 
+                                <input type="file" name="filePath" required class="form-control">
+                            </div>
+                        </div>
+                        <div class="mb-3 mt-5">
+                            <button type="submit" name="new_project_btn" class="btn btn-dark w-100">Add new project</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Create new project modal end-->

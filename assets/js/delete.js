@@ -60,3 +60,22 @@ function confirmJobDelete(self) {
     document.getElementById("form-delete-job").id.value = id;
     $("#jobDeleteModal").modal("show");
 }
+
+
+//Project Category Delete Trigger
+function confirmProjectCategoryDelete(self) {
+    var id = self.getAttribute("data-id");
+
+    document.getElementById("form-delete-project-category").id.value = id;
+    $("#projectCategoryDeleteModal").modal("show");
+}
+
+
+
+//Project Delete Trigger
+function confirmProjectDelete(self) {
+    var id = self.getAttribute("data-id");
+
+    document.getElementById("form-delete-project").id.value = id;
+    $("#projectDeleteModal").modal("show");
+}
