@@ -127,7 +127,7 @@
 
                         <div class="row align-items-center mb-10">
                             <div class="col-md-2">
-                                <label class="form-label">Title</label>
+                                <label class="form-label">Project Category</label>
                             </div>
                             <div class="col-md-8 col-xl-8">
                                 <div class="">

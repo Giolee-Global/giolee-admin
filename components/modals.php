@@ -173,7 +173,7 @@
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
                         <div class="row g-5 mb-5">
                             <div class="col-sm-12">
-                                <label class="form-label">Certificate Title</label> 
+                                <label class="form-label">Title</label> 
                                 <input type="text" name="title" required class="form-control">
                             </div>
                         </div>
@@ -208,7 +208,7 @@
                                 <input type="text" name="title" required class="form-control">
                             </div>
                             <div class="col-sm-12">
-                                <label class="form-label">Project</label>
+                                <label class="form-label">Project Category</label>
                                 <select class="form-select" name="projectCategoryID" required aria-label="Project">
                                     <?php
                                     $select_query = "SELECT * FROM project_categories";
