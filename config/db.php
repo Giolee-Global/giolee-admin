@@ -8,15 +8,15 @@ if ($WEBSITE_ENVIRONMENT == "Development") {
     $host = "localhost";
     $user = "root";
     $password = "";
-    $database = "giolee";
+    $database = "awa";
     error_reporting(E_ALL ^ E_NOTICE); // turn ON showing errors
 } else {
     $host = "localhost";
-    $user = "gioleeco_app";
-    $password = "*6a~xCSxumBL";
-    $database = "gioleeco_app";
+    $user = "awaengin_app";
+    $password = "o5%4+7XJ=0Y0lEy]";
+    $database = "awaengin_app";
     define("APP_ENVIRONMENT", "Production");
-    define("APP_BASE_URL", "https://www.backoffice.giolee.com");
+    define("APP_BASE_URL", "https://www.awaengineeringng.com/admin");
     #error_reporting(0); // turn OFF showing errors
     error_reporting(E_ALL ^ E_NOTICE); // turn ON showing errors
 }
